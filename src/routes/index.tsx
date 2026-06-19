@@ -6,23 +6,33 @@ import { ResultCard } from "@/components/qr/ResultCard";
 import { ErrorState } from "@/components/qr/ErrorState";
 import { validateImageFile } from "@/lib/qr/validate";
 import { decodeQrFromFile } from "@/lib/qr/decode";
+import ogImage from "@/assets/og-image.jpg.asset.json";
+
+const SITE_URL = "https://pocket-qr-vision.lovable.app";
+const OG_IMAGE_URL = `${SITE_URL}${ogImage.url}`;
+const TITLE = "Scan QR Codes from Photos — Free, Private, No App";
+const DESCRIPTION =
+  "Upload any photo with a QR code and decode it instantly in your browser. 100% private, works offline, no app or sign-up needed.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "QR Scan — Decode QR codes from any image" },
-      {
-        name: "description",
-        content:
-          "Free, private QR code scanner. Upload an image and decode the QR instantly in your browser. Works on low-end phones, no app required.",
-      },
-      { property: "og:title", content: "QR Scan — Decode QR codes from any image" },
-      {
-        property: "og:description",
-        content:
-          "Upload a photo of a QR code and decode it instantly. Runs entirely on your device — your images never leave your phone.",
-      },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: OG_IMAGE_URL },
+      { property: "og:image:width", content: "1216" },
+      { property: "og:image:height", content: "640" },
+      { property: "og:image:alt", content: "QR Scan — Scan QR codes from photos in your browser" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:image", content: OG_IMAGE_URL },
     ],
+    links: [{ rel: "canonical", href: SITE_URL }],
   }),
   component: Index,
 });
