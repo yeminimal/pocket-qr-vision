@@ -4,6 +4,8 @@ import { Loader2, QrCode, ShieldCheck, Zap, WifiOff } from "lucide-react";
 import { Dropzone } from "@/components/qr/Dropzone";
 import { ResultCard } from "@/components/qr/ResultCard";
 import { ErrorState } from "@/components/qr/ErrorState";
+import { Paywall } from "@/components/qr/Paywall";
+import { checkScanLimit, recordScan } from "@/server/usage";
 import { validateImageFile } from "@/lib/qr/validate";
 import { decodeQrFromFile } from "@/lib/qr/decode";
 import ogImage from "@/assets/og-image.jpg.asset.json";
@@ -45,6 +47,18 @@ type Status =
 
 function Index() {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const [showPaywall, setShowPaywall] = useState(false);
+  const [remainingScans, setRemainingScans] = useState<number | null>(null);
+  
+  // Generate a simple device fingerprint
+  const getFingerprint = () => {
+    let fp = localStorage.getItem('seeqr_fingerprint');
+    if (!fp) {
+      fp = Math.random().toString(36).substring(2) + Date.now().toString(36);
+      localStorage.setItem('seeqr_fingerprint', fp);
+    }
+    return fp;
+  };
 
   const handleFile = async (file: File) => {
     const validationError = validateImageFile(file);
@@ -54,7 +68,20 @@ function Index() {
     }
     setStatus({ kind: "scanning" });
     try {
+      const fingerprint = getFingerprint();
+      const check = await checkScanLimit({ data: { fingerprint } });
+      
+      if (!check.allowed) {
+        setStatus({ kind: "idle" });
+        setShowPaywall(true);
+        return;
+      }
+
       const data = await decodeQrFromFile(file);
+      
+      const record = await recordScan({ data: { fingerprint } });
+      setRemainingScans(record.remaining);
+      
       setStatus({ kind: "success", data });
     } catch (err) {
       setStatus({
@@ -84,8 +111,7 @@ function Index() {
             Decode a QR code from any image
           </h1>
           <p className="mt-3 text-base text-muted-foreground">
-            Upload a photo and we'll read the QR for you. Everything happens on your device —
-            no uploads, no accounts, no tracking.
+            Upload a photo and we'll read the QR for you. You have {remainingScans !== null ? <strong className="text-primary">{remainingScans}</strong> : '5'} free scans remaining before needing to unlock unlimited access.
           </p>
         </section>
 
@@ -105,6 +131,8 @@ function Index() {
           {status.kind === "error" && (
             <ErrorState message={status.message} onReset={reset} />
           )}
+
+          {showPaywall && <Paywall onClose={() => setShowPaywall(false)} />}
         </div>
 
         <ul className="mt-10 grid gap-3 sm:grid-cols-3">
