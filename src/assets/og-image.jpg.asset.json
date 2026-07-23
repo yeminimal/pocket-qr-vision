@@ -2,10 +2,10 @@
   "version": 1,
   "asset_id": "5e89caf6-bfe0-4c29-b52d-4cb4af8d824f",
   "project_id": "edc856d1-eb6c-4318-87fc-4579d50dc45d",
-  "url": "/__l5e/assets-v1/5e89caf6-bfe0-4c29-b52d-4cb4af8d824f/og-image.jpg",
+  "url": "https://tryseeqr.vercel.app/og-image.png",
   "r2_key": "a/v1/edc856d1-eb6c-4318-87fc-4579d50dc45d/5e89caf6-bfe0-4c29-b52d-4cb4af8d824f/og-image.jpg",
-  "original_filename": "og-image.jpg",
+  "original_filename": "og-image.png",
   "size": 147060,
-  "content_type": "image/jpeg",
+  "content_type": "image/png",
   "created_at": "2026-06-19T23:49:21Z"
 }
