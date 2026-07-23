@@ -10,7 +10,7 @@ import ogImage from "@/og-image.png";
 
 const SITE_URL = "https://tryseeqr.vercel.app";
 
-const OG_IMAGE_URL = `${SITE_URL}/og-image.jpg`;
+const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
 
 const TITLE = "Scan QR Codes from your Device's Photos — Free, Private, No App";
 
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image:height", content: "640" },
       {
         property: "og:image:alt",
-        content: "SeeQR — Create and scan QR codes instantly",
+        content: "SeeQR — Upload & Decode QR codes instantly",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
