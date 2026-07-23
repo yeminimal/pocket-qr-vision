@@ -6,7 +6,7 @@ import { ResultCard } from "@/components/qr/ResultCard";
 import { ErrorState } from "@/components/qr/ErrorState";
 import { validateImageFile } from "@/lib/qr/validate";
 import { decodeQrFromFile } from "@/lib/qr/decode";
-import ogImage from "@/og-image.png";
+import ogImage from "@/public/og-image.png";
 
 const SITE_URL = "https://tryseeqr.vercel.app";
 
