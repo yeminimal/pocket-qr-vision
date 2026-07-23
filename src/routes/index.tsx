@@ -6,11 +6,14 @@ import { ResultCard } from "@/components/qr/ResultCard";
 import { ErrorState } from "@/components/qr/ErrorState";
 import { validateImageFile } from "@/lib/qr/validate";
 import { decodeQrFromFile } from "@/lib/qr/decode";
-import ogImage from "@/assets/og-image.jpg.asset.json";
+import ogImage from "@/og-image.png";
 
-const SITE_URL = "https://pocket-qr-vision.lovable.app";
-const OG_IMAGE_URL = `${SITE_URL}${ogImage.url}`;
-const TITLE = "Scan QR Codes from Photos — Free, Private, No App";
+const SITE_URL = "https://tryseeqr.vercel.app";
+
+const OG_IMAGE_URL = `${SITE_URL}/og-image.jpg`;
+
+const TITLE = "Scan QR Codes from your Device's Photos — Free, Private, No App";
+
 const DESCRIPTION =
   "Upload any photo with a QR code and decode it instantly in your browser. 100% private, works offline, no app or sign-up needed.";
 
@@ -26,7 +29,10 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: OG_IMAGE_URL },
       { property: "og:image:width", content: "1216" },
       { property: "og:image:height", content: "640" },
-      { property: "og:image:alt", content: "QR Scan — Scan QR codes from photos in your browser" },
+      {
+        property: "og:image:alt",
+        content: "SeeQR — Create and scan QR codes instantly",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
