@@ -8,7 +8,7 @@ import { validateImageFile } from "@/lib/qr/validate";
 import { decodeQrFromFile } from "@/lib/qr/decode";
 import ogImage from "@/assets/og-image.jpg.asset.json";
 
-const SITE_URL = "https://tryseeqr.vercel.app";
+const SITE_URL = "https://pocket-qr-vision.lovable.app";
 const OG_IMAGE_URL = `${SITE_URL}${ogImage.url}`;
 const TITLE = "Scan QR Codes from Photos — Free, Private, No App";
 const DESCRIPTION =
@@ -17,20 +17,20 @@ const DESCRIPTION =
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: SeeQR – Free Offline QR Code Scanner on low end devices },
-      { name: "description", content: Upload any photo with a QR code and we'll decode it for you. },
-      { property: "og:title", content: SeeQR – Free Offline QR Code Scanner for low end devices },
-      { property: "og:description", content: Upload any photo with a QR code and we'll decode it for you. },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: https://tryseeqr.vercel.app/ },
-      { property: "og:image", content: https://tryseeqr.vercel.app/og-image.png },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: OG_IMAGE_URL },
       { property: "og:image:width", content: "1216" },
       { property: "og:image:height", content: "640" },
       { property: "og:image:alt", content: "QR Scan — Scan QR codes from photos in your browser" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: SeeQR – Free Offline QR Code Scanner on low end devices },
-      { name: "twitter:description", content: Upload any photo with a QR code and we'll decode it for you. },
-      { name: "twitter:image", content: https://tryseeqr.vercel.app/og-image.png },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:image", content: OG_IMAGE_URL },
     ],
     links: [{ rel: "canonical", href: SITE_URL }],
   }),
