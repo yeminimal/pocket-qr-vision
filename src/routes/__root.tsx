@@ -69,18 +69,28 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-    ],
+   meta: [
+  { charSet: "utf-8" },
+  { name: "viewport", content: "width=device-width, initial-scale=1" },
+  { title: "Seeqr | Scan QR codes from photos offline" },
+  { name: "description", content: "Offline QR code sanner for low end devices" },
+  { name: "author", content: "Wiiliams Olayemi Martins" },
+
+  { property: "og:title", content: "Seeqr" },
+  { property: "og:description", content: "Upload any photo with a QR code and we'll decode it instantly in your browser" },
+  { property: "og:type", content: "website" },
+  {
+    property: "og:image",
+    content: "https://tryseeqr.vercel.app/og-image.png",
+  },
+
+  { name: "twitter:card", content: "summary_large_image" },
+  {
+    name: "twitter:image",
+    content: "https://tryseeqr.vercel.app/og-image.png",
+  },
+  { name: "twitter:site", content: "@tryseeqr" },
+],
     links: [
       {
         rel: "stylesheet",
