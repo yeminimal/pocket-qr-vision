@@ -69,34 +69,84 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
-   meta: [
+  meta: [
   { charSet: "utf-8" },
   { name: "viewport", content: "width=device-width, initial-scale=1" },
-  { title: "Seeqr | Scan QR codes from photos offline" },
-  { name: "description", content: "Offline QR code sanner for low end devices" },
-  { name: "author", content: "Wiiliams Olayemi Martins" },
 
-  { property: "og:title", content: "Seeqr" },
-  { property: "og:description", content: "Upload any photo with a QR code and we'll decode it instantly in your browser" },
+  // Primary metadata
+  { title: "SeeQR – Free Offline QR Code Scanner for low end devices" },
+  {
+    name: "description",
+    content:
+      "Scan QR codes offline automatically without cameras.",
+  },
+  { name: "author", content: "Williams Olayemi Martins" },
+  { name: "application-name", content: "SeeQR" },
+  { name: "robots", content: "index, follow" },
+  { name: "theme-color", content: "#99FF00" },
+
+  // Open Graph
+  {
+    property: "og:title",
+    content: "SeeQR – Free Offline QR Code Scanner for low end devices",
+  },
+  {
+    property: "og:description",
+    content:
+      "SeeQR – Free Offline QR Code Scanner for low end devices.",
+  },
   { property: "og:type", content: "website" },
+  { property: "og:site_name", content: "SeeQR" },
+  { property: "og:url", content: "https://tryseeqr.vercel.app" },
+  { property: "og:locale", content: "en_US" },
   {
     property: "og:image",
     content: "https://tryseeqr.vercel.app/og-image.png",
   },
 
+  // Twitter
   { name: "twitter:card", content: "summary_large_image" },
+  {
+    name: "twitter:title",
+    content: "SeeQR – Free Offline QR Code Scanner for low end devices",
+  },
+  {
+    name: "twitter:description",
+    content:
+      "Scan QR codes offline in seconds.",
+  },
   {
     name: "twitter:image",
     content: "https://tryseeqr.vercel.app/og-image.png",
   },
-  { name: "twitter:site", content: "@tryseeqr" },
+  {
+    name: "twitter:site", content:"@tryseeqr"
+  },
+
 ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
+  {
+    rel: "stylesheet",
+    href: appCss,
+  },
+  {
+    rel: "icon",
+    href: "/favicon.ico",
+  },
+  {
+    rel: "icon",
+    type: "image/svg+xml",
+    href: "/favicon.svg",
+  },
+  {
+    rel: "apple-touch-icon",
+    href: "/apple-touch-icon.png",
+  },
+  {
+    rel: "manifest",
+    href: "/webmanifest.json",
+  },
+],
   }),
   shellComponent: RootShell,
   component: RootComponent,
