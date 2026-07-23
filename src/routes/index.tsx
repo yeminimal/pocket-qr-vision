@@ -29,6 +29,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: OG_IMAGE_URL },
       { property: "og:image:width", content: "1216" },
       { property: "og:image:height", content: "640" },
+      { property: "og:logo", content: OG_IMAGE_URL },
       {
         property: "og:image:alt",
         content: "SeeQR — Upload & Decode QR codes instantly",
