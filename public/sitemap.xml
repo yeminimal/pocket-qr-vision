@@ -69,14 +69,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- API Documentation -->
-  <url>
-    <loc>https://api.seeqr.io/docs</loc>
-    <lastmod>2024-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <!-- Pricing -->
   <url>
     <loc>https://tryseeqr.vercel.app/pricing</loc>
@@ -259,14 +251,6 @@
     <lastmod>2024-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>
-
-  <!-- Status Page -->
-  <url>
-    <loc>https://status.seeqr.io</loc>
-    <lastmod>2024-01-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
   </url>
 
 </urlset>
