@@ -3,7 +3,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { faqJsonLd, seo } from "@/lib/site";
 import { useCasesHub as page } from "@/content/use-cases";
 
-export const Route = createFileRoute("/use-cases")({
+export const Route = createFileRoute("/use-cases/")({
   head: () => ({
     ...seo({
       title: "QR Scanner Use Cases — Seeqr",

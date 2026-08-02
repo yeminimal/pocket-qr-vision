@@ -3,7 +3,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { faqJsonLd, seo } from "@/lib/site";
 import { docsHub as page } from "@/content/docs";
 
-export const Route = createFileRoute("/docs")({
+export const Route = createFileRoute("/docs/")({
   head: () => ({
     ...seo({
       title: "Documentation — Seeqr",

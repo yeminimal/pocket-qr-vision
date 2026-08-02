@@ -3,7 +3,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { faqJsonLd, seo } from "@/lib/site";
 import { featuresOverview as page } from "@/content/features";
 
-export const Route = createFileRoute("/features")({
+export const Route = createFileRoute("/features/")({
   head: () => ({
     ...seo({
       title: "Features — Seeqr QR Scanner",
