@@ -7,7 +7,6 @@ import {
   ChevronDown,
   Clock,
   CreditCard,
-  DeviceMobileIcon,
   FileText,
   Lock,
   Package,
@@ -19,7 +18,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-// lucide has no DeviceMobileIcon export; alias below keeps the map explicit.
 type IconName = keyof typeof icons;
 
 const icons = {
