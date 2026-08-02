@@ -1,155 +1,129 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Loader2, QrCode, ShieldCheck, Zap, WifiOff } from "lucide-react";
-import { Dropzone } from "@/components/qr/Dropzone";
-import { ResultCard } from "@/components/qr/ResultCard";
-import { ErrorState } from "@/components/qr/ErrorState";
-import { validateImageFile } from "@/lib/qr/validate";
-import { decodeQrFromFile } from "@/lib/qr/decode";
-import ogImage from "@/public/og-image.png";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Sections, type Section } from "@/components/site/Sections";
+import { faqJsonLd, seo, SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://tryseeqr.vercel.app";
-
-const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
-
-const TITLE = "Scan QR Codes from your Device's Photos — Free, Private, No App";
-
+const TITLE = "Seeqr — Scan QR Codes from Images, Free & Private";
 const DESCRIPTION =
-  "Upload any photo with a QR code and decode it instantly in your browser. 100% private, works offline, no app or sign-up needed.";
+  "Upload any screenshot or photo and decode its QR code instantly in your browser. No camera, no app, no uploads — works on low-end devices and offline.";
+
+const sections: Section[] = [
+  {
+    type: "stats",
+    items: [
+      { icon: "bolt", value: "<1s", label: "Typical decode time" },
+      { icon: "lock", value: "0", label: "Images uploaded" },
+      { icon: "clock", value: "100%", label: "Works offline" },
+      { icon: "chart", value: "Free", label: "Unlimited scanning" },
+    ],
+  },
+  {
+    type: "steps",
+    heading: "How it works",
+    sub: "Three steps, no account, no install.",
+    items: [
+      { title: "Upload an image", body: "Drag a screenshot in or pick a JPG, PNG or WebP from your device." },
+      { title: "Decode on device", body: "Seeqr reads the pixels in your browser — the file never leaves your phone." },
+      { title: "Verify and act", body: "Review the destination and safety signals, then copy, open or share it." },
+    ],
+  },
+  {
+    type: "cards",
+    heading: "Why people use Seeqr",
+    sub: "Built for the phones and connections most QR tools ignore.",
+    items: [
+      { icon: "upload", title: "No camera needed", body: "Read codes from screenshots, chat forwards and PDFs.", to: "/features/qr-detection" },
+      { icon: "shield", title: "Phishing checks", body: "See the real destination and risk signals before you tap.", to: "/features/phishing-detection" },
+      { icon: "lock", title: "Fully private", body: "Decoding happens locally. Nothing is uploaded or stored.", to: "/features/privacy-first" },
+      { icon: "bolt", title: "Tiny and fast", body: "Loads on slow networks and runs on entry-level devices." },
+      { icon: "clock", title: "Offline capable", body: "Keeps decoding once the page has loaded." },
+      { icon: "chart", title: "API and SDK", body: "Add the same detection to your own product.", to: "/docs/api" },
+    ],
+  },
+  {
+    type: "cards",
+    heading: "Where it fits",
+    cols: 4,
+    items: [
+      { icon: "card", title: "Payments", body: "Verify a payment code before money moves.", to: "/use-cases/payments" },
+      { icon: "document", title: "Documents", body: "Read invoice and certificate codes.", to: "/use-cases/documents" },
+      { icon: "package", title: "Shipping", body: "Decode labels from customer photos.", to: "/use-cases/ecommerce" },
+      { icon: "ticket", title: "Ticketing", body: "Check tickets sent as screenshots.", to: "/use-cases/events" },
+    ],
+  },
+  {
+    type: "faq",
+    heading: "Frequently asked questions",
+    items: [
+      { q: "Is Seeqr free?", a: "Yes. In-browser scanning is unlimited and free, with no account required." },
+      { q: "Do I need to install anything?", a: "No. Seeqr is a web page — open it and scan." },
+      { q: "Are my images uploaded?", a: "No. The image is decoded in your browser and never sent to a server." },
+      { q: "Which files can I use?", a: "JPG, PNG and WebP images up to 10 MB." },
+      { q: "Does it work without internet?", a: "Yes, once the page has loaded decoding continues offline." },
+      { q: "Can I use it in my own app?", a: "Yes — the API and NPM SDK expose the same detection and safety layer." },
+    ],
+  },
+  {
+    type: "cta",
+    heading: "Scan your first code now",
+    sub: "Free, private and instant — on any device.",
+    primary: { label: "Scan for free", to: "/app" },
+    secondary: { label: "Explore features", to: "/features" },
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: SITE_URL },
-      { property: "og:image", content: OG_IMAGE_URL },
-      { property: "og:image:width", content: "1216" },
-      { property: "og:image:height", content: "640" },
-      { property: "og:logo", content: OG_IMAGE_URL },
+    ...seo({ title: TITLE, description: DESCRIPTION, path: "/" }),
+    scripts: [
       {
-        property: "og:image:alt",
-        content: "SeeQR — Upload & Decode QR codes instantly",
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Seeqr",
+          url: SITE_URL,
+          applicationCategory: "UtilitiesApplication",
+          operatingSystem: "Any",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        }),
       },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESCRIPTION },
-      { name: "twitter:image", content: OG_IMAGE_URL },
+      ...faqJsonLd(sections),
     ],
-    links: [{ rel: "canonical", href: SITE_URL }],
   }),
-  component: Index,
+  component: Home,
 });
 
-type Status =
-  | { kind: "idle" }
-  | { kind: "scanning" }
-  | { kind: "success"; data: string }
-  | { kind: "error"; message: string };
-
-function Index() {
-  const [status, setStatus] = useState<Status>({ kind: "idle" });
-
-  const handleFile = async (file: File) => {
-    const validationError = validateImageFile(file);
-    if (validationError) {
-      setStatus({ kind: "error", message: validationError });
-      return;
-    }
-    setStatus({ kind: "scanning" });
-    try {
-      const data = await decodeQrFromFile(file);
-      setStatus({ kind: "success", data });
-    } catch (err) {
-      setStatus({
-        kind: "error",
-        message: err instanceof Error ? err.message : "Something went wrong while scanning.",
-      });
-    }
-  };
-
-  const reset = () => setStatus({ kind: "idle" });
-
+function Home() {
   return (
-    <main className="min-h-dvh bg-background">
-      <div className="mx-auto flex min-h-dvh max-w-2xl flex-col px-4 py-8 sm:py-12">
-        <header className="mb-8 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <QrCode className="h-5 w-5" />
-          </div>
-          <div>
-            <p className="text-sm font-medium text-foreground">QR Scan</p>
-            <p className="text-xs text-muted-foreground">Private, in-browser decoding</p>
-          </div>
-        </header>
-
-        <section className="mb-8">
-          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Decode a QR code from any image
-          </h1>
-          <p className="mt-3 text-base text-muted-foreground">
-            Upload a photo and we'll read the QR for you. Everything happens on your device —
-            no uploads, no accounts, no tracking.
+    <main>
+      <div className="border-b border-border bg-primary-soft">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-primary">
+            Free QR scanner for every device
           </p>
-        </section>
-
-        <div className="space-y-4">
-          {status.kind === "idle" && <Dropzone onFile={handleFile} />}
-
-          {status.kind === "scanning" && (
-            <div className="flex min-h-[280px] flex-col items-center justify-center gap-3 rounded-2xl border border-border bg-card p-10 text-center">
-              <Loader2 className="h-7 w-7 animate-spin text-primary" />
-              <p className="text-sm font-medium text-foreground">Decoding…</p>
-              <p className="text-xs text-muted-foreground">Reading the image on your device</p>
-            </div>
-          )}
-
-          {status.kind === "success" && <ResultCard data={status.data} onReset={reset} />}
-
-          {status.kind === "error" && (
-            <ErrorState message={status.message} onReset={reset} />
-          )}
+          <h1 className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">
+            Scan QR codes from images — no camera, no app, no uploads
+          </h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {DESCRIPTION}
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              to="/app"
+              className="inline-flex h-12 items-center justify-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              Scan for free
+            </Link>
+            <Link
+              to="/docs/getting-started"
+              className="inline-flex h-12 items-center justify-center rounded-lg border border-primary px-6 text-sm font-medium text-primary transition-colors hover:bg-background"
+            >
+              Read the docs
+            </Link>
+          </div>
         </div>
-
-        <ul className="mt-10 grid gap-3 sm:grid-cols-3">
-          <Feature icon={<ShieldCheck className="h-4 w-4" />} title="100% private">
-            Images stay on your phone.
-          </Feature>
-          <Feature icon={<Zap className="h-4 w-4" />} title="Fast & light">
-            Tiny bundle, low-end friendly.
-          </Feature>
-          <Feature icon={<WifiOff className="h-4 w-4" />} title="Works offline">
-            No internet required to decode.
-          </Feature>
-        </ul>
-
-        <footer className="mt-auto pt-10 text-center text-xs text-muted-foreground">
-          Built for devices that can't run Google Lens.
-        </footer>
       </div>
+      <Sections sections={sections} />
     </main>
-  );
-}
-
-function Feature({
-  icon,
-  title,
-  children,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <li className="rounded-xl border border-border bg-card p-4">
-      <div className="mb-2 flex items-center gap-2 text-primary">
-        {icon}
-        <span className="text-sm font-medium text-foreground">{title}</span>
-      </div>
-      <p className="text-xs text-muted-foreground">{children}</p>
-    </li>
   );
 }

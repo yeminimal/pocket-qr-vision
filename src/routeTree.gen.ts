@@ -9,38 +9,370 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SupportRouteImport } from './routes/support'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as AppRouteImport } from './routes/app'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UseCasesIndexRouteImport } from './routes/use-cases.index'
+import { Route as FeaturesIndexRouteImport } from './routes/features.index'
+import { Route as DocsIndexRouteImport } from './routes/docs.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as VsGoogleVisionRouteImport } from './routes/vs.google-vision'
+import { Route as VsAwsRekognitionRouteImport } from './routes/vs.aws-rekognition'
+import { Route as UseCasesPaymentsRouteImport } from './routes/use-cases.payments'
+import { Route as UseCasesEventsRouteImport } from './routes/use-cases.events'
+import { Route as UseCasesEcommerceRouteImport } from './routes/use-cases.ecommerce'
+import { Route as UseCasesDocumentsRouteImport } from './routes/use-cases.documents'
+import { Route as FeaturesQrDetectionRouteImport } from './routes/features.qr-detection'
+import { Route as FeaturesPrivacyFirstRouteImport } from './routes/features.privacy-first'
+import { Route as FeaturesPhishingDetectionRouteImport } from './routes/features.phishing-detection'
+import { Route as DocsSdkRouteImport } from './routes/docs.sdk'
+import { Route as DocsSafetyLayerRouteImport } from './routes/docs.safety-layer'
+import { Route as DocsGettingStartedRouteImport } from './routes/docs.getting-started'
+import { Route as DocsExamplesRouteImport } from './routes/docs.examples'
+import { Route as DocsApiRouteImport } from './routes/docs.api'
+import { Route as BlogQrPhishingGuideRouteImport } from './routes/blog.qr-phishing-guide'
 
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UseCasesIndexRoute = UseCasesIndexRouteImport.update({
+  id: '/use-cases/',
+  path: '/use-cases/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
+  id: '/features/',
+  path: '/features/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsIndexRoute = DocsIndexRouteImport.update({
+  id: '/docs/',
+  path: '/docs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VsGoogleVisionRoute = VsGoogleVisionRouteImport.update({
+  id: '/vs/google-vision',
+  path: '/vs/google-vision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VsAwsRekognitionRoute = VsAwsRekognitionRouteImport.update({
+  id: '/vs/aws-rekognition',
+  path: '/vs/aws-rekognition',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseCasesPaymentsRoute = UseCasesPaymentsRouteImport.update({
+  id: '/use-cases/payments',
+  path: '/use-cases/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseCasesEventsRoute = UseCasesEventsRouteImport.update({
+  id: '/use-cases/events',
+  path: '/use-cases/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseCasesEcommerceRoute = UseCasesEcommerceRouteImport.update({
+  id: '/use-cases/ecommerce',
+  path: '/use-cases/ecommerce',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseCasesDocumentsRoute = UseCasesDocumentsRouteImport.update({
+  id: '/use-cases/documents',
+  path: '/use-cases/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesQrDetectionRoute = FeaturesQrDetectionRouteImport.update({
+  id: '/features/qr-detection',
+  path: '/features/qr-detection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesPrivacyFirstRoute = FeaturesPrivacyFirstRouteImport.update({
+  id: '/features/privacy-first',
+  path: '/features/privacy-first',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesPhishingDetectionRoute =
+  FeaturesPhishingDetectionRouteImport.update({
+    id: '/features/phishing-detection',
+    path: '/features/phishing-detection',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DocsSdkRoute = DocsSdkRouteImport.update({
+  id: '/docs/sdk',
+  path: '/docs/sdk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsSafetyLayerRoute = DocsSafetyLayerRouteImport.update({
+  id: '/docs/safety-layer',
+  path: '/docs/safety-layer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsGettingStartedRoute = DocsGettingStartedRouteImport.update({
+  id: '/docs/getting-started',
+  path: '/docs/getting-started',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsExamplesRoute = DocsExamplesRouteImport.update({
+  id: '/docs/examples',
+  path: '/docs/examples',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsApiRoute = DocsApiRouteImport.update({
+  id: '/docs/api',
+  path: '/docs/api',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogQrPhishingGuideRoute = BlogQrPhishingGuideRouteImport.update({
+  id: '/blog/qr-phishing-guide',
+  path: '/blog/qr-phishing-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/app': typeof AppRoute
+  '/pricing': typeof PricingRoute
+  '/support': typeof SupportRoute
+  '/blog/qr-phishing-guide': typeof BlogQrPhishingGuideRoute
+  '/docs/api': typeof DocsApiRoute
+  '/docs/examples': typeof DocsExamplesRoute
+  '/docs/getting-started': typeof DocsGettingStartedRoute
+  '/docs/safety-layer': typeof DocsSafetyLayerRoute
+  '/docs/sdk': typeof DocsSdkRoute
+  '/features/phishing-detection': typeof FeaturesPhishingDetectionRoute
+  '/features/privacy-first': typeof FeaturesPrivacyFirstRoute
+  '/features/qr-detection': typeof FeaturesQrDetectionRoute
+  '/use-cases/documents': typeof UseCasesDocumentsRoute
+  '/use-cases/ecommerce': typeof UseCasesEcommerceRoute
+  '/use-cases/events': typeof UseCasesEventsRoute
+  '/use-cases/payments': typeof UseCasesPaymentsRoute
+  '/vs/aws-rekognition': typeof VsAwsRekognitionRoute
+  '/vs/google-vision': typeof VsGoogleVisionRoute
+  '/blog/': typeof BlogIndexRoute
+  '/docs/': typeof DocsIndexRoute
+  '/features/': typeof FeaturesIndexRoute
+  '/use-cases/': typeof UseCasesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/app': typeof AppRoute
+  '/pricing': typeof PricingRoute
+  '/support': typeof SupportRoute
+  '/blog/qr-phishing-guide': typeof BlogQrPhishingGuideRoute
+  '/docs/api': typeof DocsApiRoute
+  '/docs/examples': typeof DocsExamplesRoute
+  '/docs/getting-started': typeof DocsGettingStartedRoute
+  '/docs/safety-layer': typeof DocsSafetyLayerRoute
+  '/docs/sdk': typeof DocsSdkRoute
+  '/features/phishing-detection': typeof FeaturesPhishingDetectionRoute
+  '/features/privacy-first': typeof FeaturesPrivacyFirstRoute
+  '/features/qr-detection': typeof FeaturesQrDetectionRoute
+  '/use-cases/documents': typeof UseCasesDocumentsRoute
+  '/use-cases/ecommerce': typeof UseCasesEcommerceRoute
+  '/use-cases/events': typeof UseCasesEventsRoute
+  '/use-cases/payments': typeof UseCasesPaymentsRoute
+  '/vs/aws-rekognition': typeof VsAwsRekognitionRoute
+  '/vs/google-vision': typeof VsGoogleVisionRoute
+  '/blog': typeof BlogIndexRoute
+  '/docs': typeof DocsIndexRoute
+  '/features': typeof FeaturesIndexRoute
+  '/use-cases': typeof UseCasesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/app': typeof AppRoute
+  '/pricing': typeof PricingRoute
+  '/support': typeof SupportRoute
+  '/blog/qr-phishing-guide': typeof BlogQrPhishingGuideRoute
+  '/docs/api': typeof DocsApiRoute
+  '/docs/examples': typeof DocsExamplesRoute
+  '/docs/getting-started': typeof DocsGettingStartedRoute
+  '/docs/safety-layer': typeof DocsSafetyLayerRoute
+  '/docs/sdk': typeof DocsSdkRoute
+  '/features/phishing-detection': typeof FeaturesPhishingDetectionRoute
+  '/features/privacy-first': typeof FeaturesPrivacyFirstRoute
+  '/features/qr-detection': typeof FeaturesQrDetectionRoute
+  '/use-cases/documents': typeof UseCasesDocumentsRoute
+  '/use-cases/ecommerce': typeof UseCasesEcommerceRoute
+  '/use-cases/events': typeof UseCasesEventsRoute
+  '/use-cases/payments': typeof UseCasesPaymentsRoute
+  '/vs/aws-rekognition': typeof VsAwsRekognitionRoute
+  '/vs/google-vision': typeof VsGoogleVisionRoute
+  '/blog/': typeof BlogIndexRoute
+  '/docs/': typeof DocsIndexRoute
+  '/features/': typeof FeaturesIndexRoute
+  '/use-cases/': typeof UseCasesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/app'
+    | '/pricing'
+    | '/support'
+    | '/blog/qr-phishing-guide'
+    | '/docs/api'
+    | '/docs/examples'
+    | '/docs/getting-started'
+    | '/docs/safety-layer'
+    | '/docs/sdk'
+    | '/features/phishing-detection'
+    | '/features/privacy-first'
+    | '/features/qr-detection'
+    | '/use-cases/documents'
+    | '/use-cases/ecommerce'
+    | '/use-cases/events'
+    | '/use-cases/payments'
+    | '/vs/aws-rekognition'
+    | '/vs/google-vision'
+    | '/blog/'
+    | '/docs/'
+    | '/features/'
+    | '/use-cases/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/app'
+    | '/pricing'
+    | '/support'
+    | '/blog/qr-phishing-guide'
+    | '/docs/api'
+    | '/docs/examples'
+    | '/docs/getting-started'
+    | '/docs/safety-layer'
+    | '/docs/sdk'
+    | '/features/phishing-detection'
+    | '/features/privacy-first'
+    | '/features/qr-detection'
+    | '/use-cases/documents'
+    | '/use-cases/ecommerce'
+    | '/use-cases/events'
+    | '/use-cases/payments'
+    | '/vs/aws-rekognition'
+    | '/vs/google-vision'
+    | '/blog'
+    | '/docs'
+    | '/features'
+    | '/use-cases'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/app'
+    | '/pricing'
+    | '/support'
+    | '/blog/qr-phishing-guide'
+    | '/docs/api'
+    | '/docs/examples'
+    | '/docs/getting-started'
+    | '/docs/safety-layer'
+    | '/docs/sdk'
+    | '/features/phishing-detection'
+    | '/features/privacy-first'
+    | '/features/qr-detection'
+    | '/use-cases/documents'
+    | '/use-cases/ecommerce'
+    | '/use-cases/events'
+    | '/use-cases/payments'
+    | '/vs/aws-rekognition'
+    | '/vs/google-vision'
+    | '/blog/'
+    | '/docs/'
+    | '/features/'
+    | '/use-cases/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AppRoute: typeof AppRoute
+  PricingRoute: typeof PricingRoute
+  SupportRoute: typeof SupportRoute
+  BlogQrPhishingGuideRoute: typeof BlogQrPhishingGuideRoute
+  DocsApiRoute: typeof DocsApiRoute
+  DocsExamplesRoute: typeof DocsExamplesRoute
+  DocsGettingStartedRoute: typeof DocsGettingStartedRoute
+  DocsSafetyLayerRoute: typeof DocsSafetyLayerRoute
+  DocsSdkRoute: typeof DocsSdkRoute
+  FeaturesPhishingDetectionRoute: typeof FeaturesPhishingDetectionRoute
+  FeaturesPrivacyFirstRoute: typeof FeaturesPrivacyFirstRoute
+  FeaturesQrDetectionRoute: typeof FeaturesQrDetectionRoute
+  UseCasesDocumentsRoute: typeof UseCasesDocumentsRoute
+  UseCasesEcommerceRoute: typeof UseCasesEcommerceRoute
+  UseCasesEventsRoute: typeof UseCasesEventsRoute
+  UseCasesPaymentsRoute: typeof UseCasesPaymentsRoute
+  VsAwsRekognitionRoute: typeof VsAwsRekognitionRoute
+  VsGoogleVisionRoute: typeof VsGoogleVisionRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  DocsIndexRoute: typeof DocsIndexRoute
+  FeaturesIndexRoute: typeof FeaturesIndexRoute
+  UseCasesIndexRoute: typeof UseCasesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +380,167 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/use-cases/': {
+      id: '/use-cases/'
+      path: '/use-cases'
+      fullPath: '/use-cases/'
+      preLoaderRoute: typeof UseCasesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/': {
+      id: '/features/'
+      path: '/features'
+      fullPath: '/features/'
+      preLoaderRoute: typeof FeaturesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs/': {
+      id: '/docs/'
+      path: '/docs'
+      fullPath: '/docs/'
+      preLoaderRoute: typeof DocsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vs/google-vision': {
+      id: '/vs/google-vision'
+      path: '/vs/google-vision'
+      fullPath: '/vs/google-vision'
+      preLoaderRoute: typeof VsGoogleVisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vs/aws-rekognition': {
+      id: '/vs/aws-rekognition'
+      path: '/vs/aws-rekognition'
+      fullPath: '/vs/aws-rekognition'
+      preLoaderRoute: typeof VsAwsRekognitionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/use-cases/payments': {
+      id: '/use-cases/payments'
+      path: '/use-cases/payments'
+      fullPath: '/use-cases/payments'
+      preLoaderRoute: typeof UseCasesPaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/use-cases/events': {
+      id: '/use-cases/events'
+      path: '/use-cases/events'
+      fullPath: '/use-cases/events'
+      preLoaderRoute: typeof UseCasesEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/use-cases/ecommerce': {
+      id: '/use-cases/ecommerce'
+      path: '/use-cases/ecommerce'
+      fullPath: '/use-cases/ecommerce'
+      preLoaderRoute: typeof UseCasesEcommerceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/use-cases/documents': {
+      id: '/use-cases/documents'
+      path: '/use-cases/documents'
+      fullPath: '/use-cases/documents'
+      preLoaderRoute: typeof UseCasesDocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/qr-detection': {
+      id: '/features/qr-detection'
+      path: '/features/qr-detection'
+      fullPath: '/features/qr-detection'
+      preLoaderRoute: typeof FeaturesQrDetectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/privacy-first': {
+      id: '/features/privacy-first'
+      path: '/features/privacy-first'
+      fullPath: '/features/privacy-first'
+      preLoaderRoute: typeof FeaturesPrivacyFirstRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/phishing-detection': {
+      id: '/features/phishing-detection'
+      path: '/features/phishing-detection'
+      fullPath: '/features/phishing-detection'
+      preLoaderRoute: typeof FeaturesPhishingDetectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs/sdk': {
+      id: '/docs/sdk'
+      path: '/docs/sdk'
+      fullPath: '/docs/sdk'
+      preLoaderRoute: typeof DocsSdkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs/safety-layer': {
+      id: '/docs/safety-layer'
+      path: '/docs/safety-layer'
+      fullPath: '/docs/safety-layer'
+      preLoaderRoute: typeof DocsSafetyLayerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs/getting-started': {
+      id: '/docs/getting-started'
+      path: '/docs/getting-started'
+      fullPath: '/docs/getting-started'
+      preLoaderRoute: typeof DocsGettingStartedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs/examples': {
+      id: '/docs/examples'
+      path: '/docs/examples'
+      fullPath: '/docs/examples'
+      preLoaderRoute: typeof DocsExamplesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs/api': {
+      id: '/docs/api'
+      path: '/docs/api'
+      fullPath: '/docs/api'
+      preLoaderRoute: typeof DocsApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/qr-phishing-guide': {
+      id: '/blog/qr-phishing-guide'
+      path: '/blog/qr-phishing-guide'
+      fullPath: '/blog/qr-phishing-guide'
+      preLoaderRoute: typeof BlogQrPhishingGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AppRoute: AppRoute,
+  PricingRoute: PricingRoute,
+  SupportRoute: SupportRoute,
+  BlogQrPhishingGuideRoute: BlogQrPhishingGuideRoute,
+  DocsApiRoute: DocsApiRoute,
+  DocsExamplesRoute: DocsExamplesRoute,
+  DocsGettingStartedRoute: DocsGettingStartedRoute,
+  DocsSafetyLayerRoute: DocsSafetyLayerRoute,
+  DocsSdkRoute: DocsSdkRoute,
+  FeaturesPhishingDetectionRoute: FeaturesPhishingDetectionRoute,
+  FeaturesPrivacyFirstRoute: FeaturesPrivacyFirstRoute,
+  FeaturesQrDetectionRoute: FeaturesQrDetectionRoute,
+  UseCasesDocumentsRoute: UseCasesDocumentsRoute,
+  UseCasesEcommerceRoute: UseCasesEcommerceRoute,
+  UseCasesEventsRoute: UseCasesEventsRoute,
+  UseCasesPaymentsRoute: UseCasesPaymentsRoute,
+  VsAwsRekognitionRoute: VsAwsRekognitionRoute,
+  VsGoogleVisionRoute: VsGoogleVisionRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  DocsIndexRoute: DocsIndexRoute,
+  FeaturesIndexRoute: FeaturesIndexRoute,
+  UseCasesIndexRoute: UseCasesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
