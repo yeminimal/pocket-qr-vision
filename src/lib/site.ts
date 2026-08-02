@@ -94,3 +94,24 @@ export const footerColumns: { title: string; items: NavItem[] }[] = [
     ],
   },
 ];
+
+export function faqJsonLd(sections: { type: string; items?: unknown }[]) {
+  const faq = sections.find((s) => s.type === "faq") as
+    | { items: { q: string; a: string }[] }
+    | undefined;
+  if (!faq) return [];
+  return [
+    {
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faq.items.map((i) => ({
+          "@type": "Question",
+          name: i.q,
+          acceptedAnswer: { "@type": "Answer", text: i.a },
+        })),
+      }),
+    },
+  ];
+}
