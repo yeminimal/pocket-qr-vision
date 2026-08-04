@@ -98,9 +98,7 @@ function Home() {
   return (
     <main>
       <Hero />
-      <div className="mt-16 sm:mt-24">
-        <Sections sections={sections} />
-      </div>
+      <Sections sections={sections} />
     </main>
   );
 }
