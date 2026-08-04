@@ -131,9 +131,9 @@ export function Navbar() {
               <Link
                 to="/app"
                 onClick={() => setOpen(false)}
-                className="flex h-11 items-center justify-center rounded-lg bg-primary text-sm font-medium text-primary-foreground"
+                className="flex h-11 items-center justify-center rounded-full bg-brand text-sm font-semibold text-brand-foreground"
               >
-                Scan for free
+                Learn More
               </Link>
             </li>
           </ul>
