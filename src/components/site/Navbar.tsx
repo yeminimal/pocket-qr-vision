@@ -1,37 +1,35 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, Menu, QrCode, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { primaryNav } from "@/lib/site";
 import { ThemeToggle } from "./ThemeToggle";
+import { Logo } from "./Logo";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
+    <header className="nav-gradient sticky top-0 z-50 text-white">
       <nav
         aria-label="Main"
-        className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4"
+        className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-4 px-4"
       >
-        <Link to="/" className="flex min-w-0 shrink-0 items-center gap-2">
-          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <QrCode className="h-4 w-4" />
-          </span>
-          <span className="text-base font-semibold tracking-tight">Seeqr</span>
+        <Link to="/" className="flex min-w-0 shrink-0 items-center" aria-label="Seeqr home">
+          <Logo className="h-[22px] w-auto text-white" />
         </Link>
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-10 lg:flex">
           {primaryNav.map((item) =>
             item.items ? (
               <li key={item.label} className="relative group">
                 <button
                   type="button"
-                  className="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="inline-flex items-center gap-0.5 text-sm font-semibold leading-6 text-white/90 transition-colors hover:text-white"
                   aria-haspopup="true"
                 >
                   {item.label}
-                  <ChevronDown className="h-3.5 w-3.5" />
+                  <ChevronDown className="h-4 w-4" />
                 </button>
                 <div className="invisible absolute left-0 top-full w-64 rounded-xl border border-border bg-popover p-2 opacity-0 shadow-lg transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                   {item.items.map((sub) => (
@@ -53,8 +51,8 @@ export function Navbar() {
                 <Link
                   to={item.to!}
                   activeOptions={{ exact: item.to === "/" }}
-                  className="inline-flex rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  activeProps={{ className: "text-foreground font-medium" }}
+                  className="inline-flex text-sm font-semibold leading-6 text-white/90 transition-colors hover:text-white"
+                  activeProps={{ className: "text-white" }}
                 >
                   {item.label}
                 </Link>
@@ -63,14 +61,15 @@ export function Navbar() {
           )}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <ThemeToggle />
           <Link
             to="/app"
-            className="hidden items-center justify-center rounded-lg border border-primary px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary-soft sm:inline-flex"
+            className="hidden items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold leading-6 text-[#29293A] shadow-[inset_0_0.5px_0_0_rgba(255,255,255,0.32),inset_0_-1.5px_0_0_rgba(255,255,255,0.32)] transition-opacity hover:opacity-90 sm:inline-flex"
           >
-            Scan for free
+            Learn More
           </Link>
+
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
