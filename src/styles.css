@@ -60,6 +60,14 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility nav-gradient {
+  background-image: linear-gradient(92deg, #01002a 14.39%, #263172 67.97%, #4c62ba 93.11%);
 }
 
 :root {
@@ -97,6 +105,8 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --brand: oklch(0.926 0.263 132.5);
+  --brand-foreground: oklch(0.28 0.02 285);
 }
 
 .dark {
@@ -133,6 +143,8 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+  --brand: oklch(0.926 0.263 132.5);
+  --brand-foreground: oklch(0.28 0.02 285);
 }
 
 @layer base {
@@ -141,6 +153,7 @@
   }
 
   body {
+    font-family: var(--font-sans);
     background-color: var(--color-background);
     color: var(--color-foreground);
   }

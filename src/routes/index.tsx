@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/site/Hero";
 import { Sections, type Section } from "@/components/site/Sections";
 import { faqJsonLd, seo, SITE_URL } from "@/lib/site";
 
@@ -96,33 +97,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <main>
-      <div className="border-b border-border bg-primary-soft">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-primary">
-            Free QR scanner for every device
-          </p>
-          <h1 className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">
-            Scan QR codes from images — no camera, no app, no uploads
-          </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {DESCRIPTION}
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              to="/app"
-              className="inline-flex h-12 items-center justify-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              Scan for free
-            </Link>
-            <Link
-              to="/docs/getting-started"
-              className="inline-flex h-12 items-center justify-center rounded-lg border border-primary px-6 text-sm font-medium text-primary transition-colors hover:bg-background"
-            >
-              Read the docs
-            </Link>
-          </div>
-        </div>
-      </div>
+      <Hero />
       <Sections sections={sections} />
     </main>
   );
