@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/site/Hero";
 import { Sections, type Section } from "@/components/site/Sections";
 import { faqJsonLd, seo, SITE_URL } from "@/lib/site";
 
