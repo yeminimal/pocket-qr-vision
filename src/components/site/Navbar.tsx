@@ -131,13 +131,14 @@ export function Navbar() {
             ))}
             <li className="py-3">
               <Link
-                to="/app"
+                to="/pricing"
                 onClick={() => setOpen(false)}
-                className="flex h-11 items-center justify-center rounded-full bg-brand text-sm font-semibold text-brand-foreground"
+                className="flex h-11 items-center justify-center rounded-2xl bg-primary text-sm font-medium text-primary-foreground"
               >
-                Learn More
+                Go premium
               </Link>
             </li>
+
           </ul>
         </div>
       )}
