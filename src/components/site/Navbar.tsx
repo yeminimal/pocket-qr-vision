@@ -10,14 +10,15 @@ export function Navbar() {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
 
   return (
-    <header className="nav-gradient sticky top-0 z-50 text-white">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <nav
         aria-label="Main"
-        className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-4 px-4"
+        className="mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-4 px-4"
       >
         <Link to="/" className="flex min-w-0 shrink-0 items-center" aria-label="Seeqr home">
-          <Logo className="h-[22px] w-auto text-white" />
+          <Logo className="h-[20px] w-auto text-foreground" />
         </Link>
+
 
         <ul className="hidden items-center gap-10 lg:flex">
           {primaryNav.map((item) =>
