@@ -20,24 +20,24 @@ export function Navbar() {
         </Link>
 
 
-        <ul className="hidden items-center gap-10 lg:flex">
+        <ul className="hidden items-center gap-8 lg:flex">
           {primaryNav.map((item) =>
             item.items ? (
-              <li key={item.label} className="relative group">
+              <li key={item.label} className="group relative">
                 <button
                   type="button"
-                  className="inline-flex items-center gap-0.5 text-sm font-semibold leading-6 text-white/90 transition-colors hover:text-white"
+                  className="inline-flex items-center gap-0.5 text-sm font-medium tracking-[-0.01em] text-muted-foreground transition-colors hover:text-foreground"
                   aria-haspopup="true"
                 >
                   {item.label}
                   <ChevronDown className="h-4 w-4" />
                 </button>
-                <div className="invisible absolute left-0 top-full w-64 rounded-xl border border-border bg-popover p-2 opacity-0 shadow-lg transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                <div className="invisible absolute left-0 top-full w-64 rounded-2xl border border-border bg-popover p-2 opacity-0 shadow-sm transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                   {item.items.map((sub) => (
                     <Link
                       key={sub.to}
                       to={sub.to}
-                      className="block rounded-lg px-3 py-2 hover:bg-accent"
+                      className="block rounded-xl px-3 py-2 hover:bg-accent"
                     >
                       <span className="block text-sm font-medium text-foreground">{sub.label}</span>
                       {sub.description && (
@@ -52,8 +52,8 @@ export function Navbar() {
                 <Link
                   to={item.to!}
                   activeOptions={{ exact: item.to === "/" }}
-                  className="inline-flex text-sm font-semibold leading-6 text-white/90 transition-colors hover:text-white"
-                  activeProps={{ className: "text-white" }}
+                  className="inline-flex text-sm font-medium tracking-[-0.01em] text-muted-foreground transition-colors hover:text-foreground"
+                  activeProps={{ className: "text-foreground" }}
                 >
                   {item.label}
                 </Link>
@@ -62,13 +62,13 @@ export function Navbar() {
           )}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
           <Link
-            to="/app"
-            className="hidden items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold leading-6 text-[#29293A] shadow-[inset_0_0.5px_0_0_rgba(255,255,255,0.32),inset_0_-1.5px_0_0_rgba(255,255,255,0.32)] transition-opacity hover:opacity-90 sm:inline-flex"
+            to="/pricing"
+            className="hidden items-center justify-center rounded-2xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 sm:inline-flex"
           >
-            Learn More
+            Go premium
           </Link>
 
           <button
@@ -76,11 +76,12 @@ export function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label="Toggle menu"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-white hover:bg-white/10 lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-foreground hover:bg-accent lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+
       </nav>
 
       {open && (
