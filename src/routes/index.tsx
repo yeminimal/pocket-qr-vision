@@ -1,30 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Hero } from "@/components/site/Hero";
+import { Scanner } from "@/components/qr/Scanner";
 import { Sections, type Section } from "@/components/site/Sections";
 import { faqJsonLd, seo, SITE_URL } from "@/lib/site";
 
-const TITLE = "Seeqr — Scan QR Codes from Images, Free & Private";
+const TITLE = "Seeqr — Scan Any QR Code from an Image, Free & Private";
 const DESCRIPTION =
-  "Upload any screenshot or photo and decode its QR code instantly in your browser. No camera, no app, no uploads — works on low-end devices and offline.";
+  "Drag, drop, or click. Seeqr decodes the QR code in your browser and gives you the link in seconds. No camera, no app, no uploads.";
 
 const sections: Section[] = [
   {
-    type: "stats",
-    items: [
-      { icon: "bolt", value: "<1s", label: "Typical decode time" },
-      { icon: "lock", value: "0", label: "Images uploaded" },
-      { icon: "clock", value: "100%", label: "Works offline" },
-      { icon: "chart", value: "Free", label: "Unlimited scanning" },
-    ],
-  },
-  {
     type: "steps",
     heading: "How it works",
-    sub: "Three steps, no account, no install.",
+    sub: "One action. No account, no install.",
     items: [
       { title: "Upload an image", body: "Drag a screenshot in or pick a JPG, PNG or WebP from your device." },
       { title: "Decode on device", body: "Seeqr reads the pixels in your browser — the file never leaves your phone." },
-      { title: "Verify and act", body: "Review the destination and safety signals, then copy, open or share it." },
+      { title: "Verify and act", body: "Review the destination, then copy, open or share it." },
     ],
   },
   {
@@ -41,34 +32,16 @@ const sections: Section[] = [
     ],
   },
   {
-    type: "cards",
-    heading: "Where it fits",
-    cols: 4,
-    items: [
-      { icon: "card", title: "Payments", body: "Verify a payment code before money moves.", to: "/use-cases/payments" },
-      { icon: "document", title: "Documents", body: "Read invoice and certificate codes.", to: "/use-cases/documents" },
-      { icon: "package", title: "Shipping", body: "Decode labels from customer photos.", to: "/use-cases/ecommerce" },
-      { icon: "ticket", title: "Ticketing", body: "Check tickets sent as screenshots.", to: "/use-cases/events" },
-    ],
-  },
-  {
     type: "faq",
     heading: "Frequently asked questions",
     items: [
       { q: "Is Seeqr free?", a: "Yes. In-browser scanning is unlimited and free, with no account required." },
-      { q: "Do I need to install anything?", a: "No. Seeqr is a web page — open it and scan." },
+      { q: "Do I need to install anything?", a: "No. Seeqr is a web page — open it and scan. You can also install it as an app and share images straight to it." },
       { q: "Are my images uploaded?", a: "No. The image is decoded in your browser and never sent to a server." },
       { q: "Which files can I use?", a: "JPG, PNG and WebP images up to 10 MB." },
       { q: "Does it work without internet?", a: "Yes, once the page has loaded decoding continues offline." },
       { q: "Can I use it in my own app?", a: "Yes — the API and NPM SDK expose the same detection and safety layer." },
     ],
-  },
-  {
-    type: "cta",
-    heading: "Scan your first code now",
-    sub: "Free, private and instant — on any device.",
-    primary: { label: "Scan for free", to: "/app" },
-    secondary: { label: "Explore features", to: "/features" },
   },
 ];
 
@@ -97,7 +70,23 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <main>
-      <Hero />
+      <section className="mx-auto flex max-w-2xl flex-col items-center px-4 pt-16 pb-24 sm:pt-24">
+        <h1 className="max-w-xl text-center text-[2.5rem] leading-[1.1] font-bold tracking-[-0.03em] text-foreground sm:text-[3.5rem]">
+          Scan any QR code from an image
+        </h1>
+        <p className="mt-5 text-center text-base leading-relaxed tracking-[-0.01em] text-muted-foreground sm:text-lg">
+          Drag, drop, or click. Get the link in seconds.
+        </p>
+
+        <div className="mt-12 w-full">
+          <Scanner />
+        </div>
+
+        <p className="mt-8 font-mono text-xs tracking-[0.02em] text-muted-foreground">
+          decoded on device — nothing uploaded
+        </p>
+      </section>
+
       <Sections sections={sections} />
     </main>
   );
