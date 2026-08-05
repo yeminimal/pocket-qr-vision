@@ -25,7 +25,6 @@ export type NavItem = { label: string; to: string; description?: string };
 
 export const primaryNav: { label: string; to?: string; items?: NavItem[] }[] = [
   { label: "Home", to: "/" },
-  { label: "Scan", to: "/app" },
   {
     label: "Features",
     items: [

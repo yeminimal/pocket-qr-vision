@@ -85,7 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   { name: "author", content: "Williams Olayemi Martins" },
   { name: "application-name", content: "SeeQR" },
   { name: "robots", content: "index, follow" },
-  { name: "theme-color", content: "#99FF00" },
+  { name: "theme-color", content: "#0A0A0A" },
 
   // Open Graph
   {
@@ -131,7 +131,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
   },
   {
     rel: "stylesheet",
@@ -152,7 +152,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   },
   {
     rel: "manifest",
-    href: "/webmanifest.json",
+    href: "/manifest.json",
   },
 ],
   }),
@@ -164,7 +164,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>

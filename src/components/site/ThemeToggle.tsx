@@ -6,8 +6,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
 
   useEffect(() => {
     const stored = localStorage.getItem("seeqr-theme");
-    const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = stored ? stored === "dark" : prefers;
+    const isDark = stored ? stored === "dark" : true;
     setDark(isDark);
     document.documentElement.classList.toggle("dark", isDark);
   }, []);
