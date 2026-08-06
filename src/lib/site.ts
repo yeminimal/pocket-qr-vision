@@ -62,8 +62,7 @@ export const footerColumns: { title: string; items: NavItem[] }[] = [
       { label: "Scan a URL", to: "/scanner" },
       { label: "Features", to: "/features" },
       { label: "API Documentation", to: "/docs/api" },
-      { label: "Scan URL", to: "/scanner" },
-  { label: "Pricing", to: "/pricing" },
+      { label: "Pricing", to: "/pricing" },
     ],
   },
   {
