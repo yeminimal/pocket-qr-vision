@@ -6,7 +6,7 @@ import { pricing as page } from "@/content/pages";
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     ...seo({
-      title: "Pricing — Seeqr QR Scanner & API",
+      title: "Pricing - Seeqr QR Scanner & API",
       description: "Free unlimited in-browser scanning. Simple monthly plans when you need the Seeqr API.",
       path: "/pricing",
     }),

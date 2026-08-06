@@ -16,7 +16,7 @@ function markDismissed() {
   try {
     window.localStorage.setItem(KEY, String(Date.now()));
   } catch {
-    // storage unavailable — nothing to persist
+    // storage unavailable - nothing to persist
   }
 }
 
@@ -65,7 +65,7 @@ export function ReviewPrompt({ onClose }: { onClose: () => void }) {
       </button>
 
       {sent ? (
-        <p className="pr-8 text-sm text-foreground">Thanks — that helps a lot.</p>
+        <p className="pr-8 text-sm text-foreground">Thanks - that helps a lot.</p>
       ) : (
         <>
           <p className="pr-8 text-[15px] font-semibold tracking-[-0.02em] text-foreground">

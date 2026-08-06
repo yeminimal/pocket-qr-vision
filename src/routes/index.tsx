@@ -3,7 +3,7 @@ import { Scanner } from "@/components/qr/Scanner";
 import { Sections, type Section } from "@/components/site/Sections";
 import { faqJsonLd, seo, SITE_URL } from "@/lib/site";
 
-const TITLE = "Seeqr — Scan Any QR Code from an Image, Free & Private";
+const TITLE = "Seeqr - Scan Any QR Code from an Image, Free & Private";
 const DESCRIPTION =
   "Drag, drop, or click. Seeqr decodes the QR code in your browser and gives you the link in seconds. No camera, no app, no uploads.";
 
@@ -14,7 +14,7 @@ const sections: Section[] = [
     sub: "One action. No account, no install.",
     items: [
       { title: "Upload an image", body: "Drag a screenshot in or pick a JPG, PNG or WebP from your device." },
-      { title: "Decode on device", body: "Seeqr reads the pixels in your browser — the file never leaves your phone." },
+      { title: "Decode on device", body: "Seeqr reads the pixels in your browser - the file never leaves your phone." },
       { title: "Verify and act", body: "Review the destination, then copy, open or share it." },
     ],
   },
@@ -36,11 +36,11 @@ const sections: Section[] = [
     heading: "Frequently asked questions",
     items: [
       { q: "Is Seeqr free?", a: "Yes. In-browser scanning is unlimited and free, with no account required." },
-      { q: "Do I need to install anything?", a: "No. Seeqr is a web page — open it and scan. You can also install it as an app and share images straight to it." },
+      { q: "Do I need to install anything?", a: "No. Seeqr is a web page - open it and scan. You can also install it as an app and share images straight to it." },
       { q: "Are my images uploaded?", a: "No. The image is decoded in your browser and never sent to a server." },
       { q: "Which files can I use?", a: "JPG, PNG and WebP images up to 10 MB." },
       { q: "Does it work without internet?", a: "Yes, once the page has loaded decoding continues offline." },
-      { q: "Can I use it in my own app?", a: "Yes — the API and NPM SDK expose the same detection and safety layer." },
+      { q: "Can I use it in my own app?", a: "Yes - the API and NPM SDK expose the same detection and safety layer." },
     ],
   },
 ];
@@ -83,7 +83,7 @@ function Home() {
         </div>
 
         <p className="mt-8 font-mono text-xs tracking-[0.02em] text-muted-foreground">
-          decoded on device — nothing uploaded
+          decoded on device - nothing uploaded
         </p>
       </section>
 

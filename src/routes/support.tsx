@@ -6,7 +6,7 @@ import { support as page } from "@/content/pages";
 export const Route = createFileRoute("/support")({
   head: () => ({
     ...seo({
-      title: "Support & Help — Seeqr",
+      title: "Support & Help - Seeqr",
       description: "Troubleshooting for failed scans, unsupported files and API keys, plus how to reach the team.",
       path: "/support",
     }),

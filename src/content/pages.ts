@@ -94,7 +94,7 @@ export const about: ContentPage = {
       type: "prose",
       heading: "Why we built it",
       paragraphs: [
-        "Google Lens and native camera scanners work well — until your phone is three generations old, your storage is full, or the code you need to read is a screenshot someone sent you. Then the standard advice is to install another app, which is exactly what a low-end device cannot afford.",
+        "Google Lens and native camera scanners work well - until your phone is three generations old, your storage is full, or the code you need to read is a screenshot someone sent you. Then the standard advice is to install another app, which is exactly what a low-end device cannot afford.",
         "Seeqr is a single lightweight page that decodes a QR code from an image, on the device, with no install and no account. It loads fast on slow connections and keeps working offline.",
       ],
     },
@@ -103,7 +103,7 @@ export const about: ContentPage = {
       heading: "What we care about",
       items: [
         "Accessibility on entry-level hardware and slow networks",
-        "Privacy by architecture, not by policy — the image never leaves the device",
+        "Privacy by architecture, not by policy - the image never leaves the device",
         "Honest safety information instead of a false sense of certainty",
         "A tiny bundle, kept small on purpose",
       ],
@@ -127,7 +127,7 @@ export const support: ContentPage = {
       heading: "Troubleshooting",
       items: [
         { q: "No QR code found in my image", a: "Crop tighter around the code, avoid heavy glare, and use the highest-resolution version you have. Very small or blurred codes may not carry enough detail to decode." },
-        { q: "My file was rejected", a: "Seeqr accepts JPG, PNG and WebP up to 10 MB. Screenshots in HEIC need converting first — most phones can export a JPG from the photo app." },
+        { q: "My file was rejected", a: "Seeqr accepts JPG, PNG and WebP up to 10 MB. Screenshots in HEIC need converting first - most phones can export a JPG from the photo app." },
         { q: "The result looks like random text", a: "Not every QR code holds a link. Wi-Fi credentials, vCards and payment payloads are structured text and will look unusual but are valid." },
         { q: "Nothing happens after I pick a file", a: "Reload the page and try again. If it persists on an older browser, updating the browser usually resolves it." },
         { q: "How do I get an API key?", a: "Contact us with your expected volume and we will set up your key and plan." },
@@ -154,7 +154,7 @@ export const vsGoogleVision: ContentPage = {
   eyebrow: "Comparison",
   h1: "Seeqr vs Google Cloud Vision",
   intro:
-    "Cloud Vision is a broad image-understanding API. Seeqr does one thing — QR codes from images — with no upload and no billing setup.",
+    "Cloud Vision is a broad image-understanding API. Seeqr does one thing - QR codes from images - with no upload and no billing setup.",
   sections: [
     {
       type: "table",
@@ -255,7 +255,7 @@ export const quishingGuide: ContentPage = {
   eyebrow: "Guide",
   h1: "The complete guide to QR phishing (quishing)",
   intro:
-    "QR codes hide their destination by design. That single property is what makes them such an effective phishing vehicle — and what makes a verification step so valuable.",
+    "QR codes hide their destination by design. That single property is what makes them such an effective phishing vehicle - and what makes a verification step so valuable.",
   sections: [
     {
       type: "prose",
@@ -282,7 +282,7 @@ export const quishingGuide: ContentPage = {
       items: [
         "Decode the code before opening it, and read the full destination host",
         "Be suspicious of any code that arrives unexpectedly and asks for money or a login",
-        "Check for lookalike domains — swapped letters, extra words, unusual endings",
+        "Check for lookalike domains - swapped letters, extra words, unusual endings",
         "Prefer typing a known address or using the organisation's official app",
         "Look for physical tampering: a sticker over another code is a strong warning sign",
         "Never enter card details or passwords on a page you reached only through a QR code",
@@ -301,7 +301,7 @@ export const quishingGuide: ContentPage = {
       heading: "Frequently asked",
       items: [
         { q: "Is it dangerous to just scan a QR code?", a: "Scanning alone reveals a destination. The risk comes from opening that destination and interacting with it." },
-        { q: "Can a QR code install malware by itself?", a: "Not on its own. It can lead you to a page that asks you to install something — that download is the real risk." },
+        { q: "Can a QR code install malware by itself?", a: "Not on its own. It can lead you to a page that asks you to install something - that download is the real risk." },
         { q: "How do I report a malicious code?", a: "Report it to the organisation being impersonated and, where the code is physical, to the site owner so they can remove it." },
       ],
     },

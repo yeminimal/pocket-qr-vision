@@ -22,7 +22,7 @@ export const featuresOverview: ContentPage = {
         {
           icon: "upload",
           title: "Image-based QR detection",
-          body: "Upload a screenshot or photo and get the decoded value instantly — no camera permission needed.",
+          body: "Upload a screenshot or photo and get the decoded value instantly - no camera permission needed.",
           to: "/features/qr-detection",
         },
         {
@@ -72,7 +72,7 @@ export const qrDetection: ContentPage = {
   eyebrow: "Feature",
   h1: "QR detection from any image",
   intro:
-    "Screenshots, WhatsApp forwards, PDFs turned into photos, printed posters shot at an angle — Seeqr decodes them all without a camera.",
+    "Screenshots, WhatsApp forwards, PDFs turned into photos, printed posters shot at an angle - Seeqr decodes them all without a camera.",
   primary: { label: "Scan an image", to: "/app" },
   sections: [
     {
@@ -90,7 +90,7 @@ export const qrDetection: ContentPage = {
         "JPG, PNG and WebP images up to 10 MB",
         "Low-contrast, inverted and slightly rotated codes",
         "Photos of screens, including moiré and glare",
-        "Large images — automatically downscaled before decoding for speed",
+        "Large images - automatically downscaled before decoding for speed",
         "URLs, plain text, Wi-Fi strings, vCards and payment payloads",
       ],
     },
@@ -100,7 +100,7 @@ export const qrDetection: ContentPage = {
       items: [
         {
           q: "Do I need to grant camera access?",
-          a: "No. Seeqr never requests camera permission — it only reads the file you choose.",
+          a: "No. Seeqr never requests camera permission - it only reads the file you choose.",
         },
         {
           q: "What if no code is found?",

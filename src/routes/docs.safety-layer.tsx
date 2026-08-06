@@ -6,7 +6,7 @@ import { safetyLayer as page } from "@/content/docs";
 export const Route = createFileRoute("/docs/safety-layer")({
   head: () => ({
     ...seo({
-      title: "Safety Layer — Seeqr Docs",
+      title: "Safety Layer - Seeqr Docs",
       description: "How Seeqr scores decoded links: levels, signals and the limits of automated risk detection.",
       path: "/docs/safety-layer",
     }),

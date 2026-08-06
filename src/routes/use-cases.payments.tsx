@@ -6,7 +6,7 @@ import { payments as page } from "@/content/use-cases";
 export const Route = createFileRoute("/use-cases/payments")({
   head: () => ({
     ...seo({
-      title: "Payment QR Verification — Seeqr",
+      title: "Payment QR Verification - Seeqr",
       description: "Check where a payment QR code leads before you send money. Decode it privately from a screenshot.",
       path: "/use-cases/payments",
     }),

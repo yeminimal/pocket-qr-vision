@@ -6,7 +6,7 @@ import { vsAwsRekognition as page } from "@/content/pages";
 export const Route = createFileRoute("/vs/aws-rekognition")({
   head: () => ({
     ...seo({
-      title: "Seeqr vs AWS Rekognition — QR Scanning Compared",
+      title: "Seeqr vs AWS Rekognition - QR Scanning Compared",
       description: "On-device QR decoding with no AWS setup, compared with Rekognition's broad vision features.",
       path: "/vs/aws-rekognition",
     }),

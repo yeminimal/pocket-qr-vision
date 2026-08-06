@@ -34,7 +34,7 @@ export const payments: ContentPage = {
   eyebrow: "Use case",
   h1: "Payment QR verification",
   intro:
-    "Payment codes are the highest-stakes QR codes people scan — and the ones fraudsters target most. Seeqr shows the destination before money moves.",
+    "Payment codes are the highest-stakes QR codes people scan - and the ones fraudsters target most. Seeqr shows the destination before money moves.",
   primary: { label: "Verify a code", to: "/app" },
   sections: [
     {
@@ -59,7 +59,7 @@ export const payments: ContentPage = {
       type: "faq",
       heading: "Questions",
       items: [
-        { q: "Does Seeqr process payments?", a: "No. Seeqr only decodes and inspects the code — it never initiates a transaction." },
+        { q: "Does Seeqr process payments?", a: "No. Seeqr only decodes and inspects the code - it never initiates a transaction." },
         { q: "Can Seeqr guarantee a payment code is genuine?", a: "No. It surfaces the information you need to judge, and flags known risk patterns. Always confirm unexpected requests through a trusted channel." },
       ],
     },
@@ -137,7 +137,7 @@ export const events: ContentPage = {
       heading: "At the door",
       items: [
         "Decode ticket codes from attendee screenshots and forwarded images",
-        "Keep working when venue Wi-Fi drops — decoding is offline",
+        "Keep working when venue Wi-Fi drops - decoding is offline",
         "Run on staff phones without installing anything",
         "Copy the ticket ID straight into your check-in system",
       ],
