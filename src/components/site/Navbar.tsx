@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { primaryNav } from "@/lib/site";
@@ -9,6 +9,13 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <nav
@@ -16,9 +23,8 @@ export function Navbar() {
         className="mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-4 px-4"
       >
         <Link to="/" className="flex min-w-0 shrink-0 items-center" aria-label="Seeqr home">
-          <Logo className="h-[20px] w-auto text-foreground" />
+          <Logo className="h-6 w-auto text-primary lg:h-7" />
         </Link>
-
 
         <ul className="hidden items-center gap-8 lg:flex">
           {primaryNav.map((item) =>
@@ -26,7 +32,7 @@ export function Navbar() {
               <li key={item.label} className="group relative">
                 <button
                   type="button"
-                  className="inline-flex items-center gap-0.5 text-sm font-medium tracking-[-0.01em] text-muted-foreground transition-colors hover:text-foreground"
+                  className="inline-flex items-center gap-0.5 text-sm font-medium tracking-[-0.01em] text-muted-foreground transition-colors hover:text-primary"
                   aria-haspopup="true"
                 >
                   {item.label}
@@ -41,7 +47,9 @@ export function Navbar() {
                     >
                       <span className="block text-sm font-medium text-foreground">{sub.label}</span>
                       {sub.description && (
-                        <span className="block text-xs text-muted-foreground">{sub.description}</span>
+                        <span className="block text-xs text-muted-foreground">
+                          {sub.description}
+                        </span>
                       )}
                     </Link>
                   ))}
@@ -52,8 +60,8 @@ export function Navbar() {
                 <Link
                   to={item.to!}
                   activeOptions={{ exact: item.to === "/" }}
-                  className="inline-flex text-sm font-medium tracking-[-0.01em] text-muted-foreground transition-colors hover:text-foreground"
-                  activeProps={{ className: "text-foreground" }}
+                  className="inline-flex text-sm font-medium tracking-[-0.01em] text-muted-foreground transition-colors hover:text-primary"
+                  activeProps={{ className: "text-primary" }}
                 >
                   {item.label}
                 </Link>
@@ -73,73 +81,99 @@ export function Navbar() {
 
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen(true)}
             aria-expanded={open}
-            aria-label="Toggle menu"
+            aria-label="Open menu"
             className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-foreground hover:bg-accent lg:hidden"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <Menu className="h-6 w-6" />
           </button>
         </div>
-
       </nav>
 
       {open && (
-        <div className="border-t border-border bg-background lg:hidden">
-          <ul className="mx-auto max-w-6xl px-4 py-2">
-            {primaryNav.map((item) => (
-              <li key={item.label} className="border-b border-border/60 last:border-0">
-                {item.items ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => setOpenGroup(openGroup === item.label ? null : item.label)}
-                      aria-expanded={openGroup === item.label}
-                      className="flex w-full items-center justify-between py-3 text-sm font-medium"
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <button
+            type="button"
+            aria-label="Close menu"
+            onClick={() => setOpen(false)}
+            className="animate-in fade-in absolute inset-0 bg-background/70 backdrop-blur-sm duration-300"
+          />
+          <div
+            role="dialog"
+            aria-label="Site menu"
+            className="animate-in slide-in-from-left absolute inset-y-0 left-0 flex w-[85%] max-w-sm flex-col overflow-y-auto border-r border-border bg-card p-4 duration-300 ease-out sm:w-[60%]"
+          >
+            <div className="flex items-center justify-between">
+              <Logo className="h-6 w-auto text-primary" />
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-foreground hover:bg-accent"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            <ul className="mt-6 flex flex-col gap-2">
+              {primaryNav.map((item) => (
+                <li key={item.label}>
+                  {item.items ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setOpenGroup(openGroup === item.label ? null : item.label)}
+                        aria-expanded={openGroup === item.label}
+                        className="flex min-h-12 w-full items-center justify-between rounded-xl px-4 text-base font-medium text-foreground transition-colors hover:bg-muted"
+                      >
+                        {item.label}
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${openGroup === item.label ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                      {openGroup === item.label && (
+                        <ul className="animate-in fade-in mt-1 flex flex-col gap-1 pl-3 duration-200">
+                          {item.items.map((sub) => (
+                            <li key={sub.to}>
+                              <Link
+                                to={sub.to}
+                                onClick={() => setOpen(false)}
+                                className="flex min-h-12 items-center rounded-xl px-4 text-[15px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                                activeProps={{
+                                  className: "border-l-4 border-primary bg-muted text-foreground",
+                                }}
+                              >
+                                {sub.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      to={item.to!}
+                      onClick={() => setOpen(false)}
+                      activeOptions={{ exact: item.to === "/" }}
+                      className="flex min-h-12 items-center rounded-xl px-4 text-base font-medium text-foreground transition-colors hover:bg-muted"
+                      activeProps={{ className: "border-l-4 border-primary bg-muted" }}
                     >
                       {item.label}
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform ${openGroup === item.label ? "rotate-180" : ""}`}
-                      />
-                    </button>
-                    {openGroup === item.label && (
-                      <ul className="pb-2 pl-3">
-                        {item.items.map((sub) => (
-                          <li key={sub.to}>
-                            <Link
-                              to={sub.to}
-                              onClick={() => setOpen(false)}
-                              className="block py-2.5 text-sm text-muted-foreground"
-                            >
-                              {sub.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    to={item.to!}
-                    onClick={() => setOpen(false)}
-                    className="block py-3 text-sm font-medium"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-            <li className="py-3">
-              <Link
-                to="/pricing"
-                onClick={() => setOpen(false)}
-                className="flex h-11 items-center justify-center rounded-2xl bg-primary text-sm font-medium text-primary-foreground"
-              >
-                Go premium
-              </Link>
-            </li>
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
 
-          </ul>
+            <Link
+              to="/pricing"
+              onClick={() => setOpen(false)}
+              className="mt-6 inline-flex min-h-12 items-center justify-center rounded-2xl bg-primary px-4 text-[15px] font-medium text-primary-foreground"
+            >
+              Go premium
+            </Link>
+          </div>
         </div>
       )}
     </header>

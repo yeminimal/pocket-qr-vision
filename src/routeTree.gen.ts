@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SupportRouteImport } from './routes/support'
+import { Route as ScannerRouteImport } from './routes/scanner'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AboutRouteImport } from './routes/about'
@@ -37,6 +38,11 @@ import { Route as BlogQrPhishingGuideRouteImport } from './routes/blog.qr-phishi
 const SupportRoute = SupportRouteImport.update({
   id: '/support',
   path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScannerRoute = ScannerRouteImport.update({
+  id: '/scanner',
+  path: '/scanner',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/app': typeof AppRoute
   '/pricing': typeof PricingRoute
+  '/scanner': typeof ScannerRoute
   '/support': typeof SupportRoute
   '/blog/qr-phishing-guide': typeof BlogQrPhishingGuideRoute
   '/docs/api': typeof DocsApiRoute
@@ -187,6 +194,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/app': typeof AppRoute
   '/pricing': typeof PricingRoute
+  '/scanner': typeof ScannerRoute
   '/support': typeof SupportRoute
   '/blog/qr-phishing-guide': typeof BlogQrPhishingGuideRoute
   '/docs/api': typeof DocsApiRoute
@@ -214,6 +222,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/app': typeof AppRoute
   '/pricing': typeof PricingRoute
+  '/scanner': typeof ScannerRoute
   '/support': typeof SupportRoute
   '/blog/qr-phishing-guide': typeof BlogQrPhishingGuideRoute
   '/docs/api': typeof DocsApiRoute
@@ -242,6 +251,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/app'
     | '/pricing'
+    | '/scanner'
     | '/support'
     | '/blog/qr-phishing-guide'
     | '/docs/api'
@@ -268,6 +278,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/app'
     | '/pricing'
+    | '/scanner'
     | '/support'
     | '/blog/qr-phishing-guide'
     | '/docs/api'
@@ -294,6 +305,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/app'
     | '/pricing'
+    | '/scanner'
     | '/support'
     | '/blog/qr-phishing-guide'
     | '/docs/api'
@@ -321,6 +333,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AppRoute: typeof AppRoute
   PricingRoute: typeof PricingRoute
+  ScannerRoute: typeof ScannerRoute
   SupportRoute: typeof SupportRoute
   BlogQrPhishingGuideRoute: typeof BlogQrPhishingGuideRoute
   DocsApiRoute: typeof DocsApiRoute
@@ -350,6 +363,13 @@ declare module '@tanstack/react-router' {
       path: '/support'
       fullPath: '/support'
       preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scanner': {
+      id: '/scanner'
+      path: '/scanner'
+      fullPath: '/scanner'
+      preLoaderRoute: typeof ScannerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -521,6 +541,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AppRoute: AppRoute,
   PricingRoute: PricingRoute,
+  ScannerRoute: ScannerRoute,
   SupportRoute: SupportRoute,
   BlogQrPhishingGuideRoute: BlogQrPhishingGuideRoute,
   DocsApiRoute: DocsApiRoute,
