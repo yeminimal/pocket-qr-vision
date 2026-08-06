@@ -115,6 +115,7 @@ export function ReviewPrompt({ onClose }: { onClose: () => void }) {
           </div>
         </>
       )}
+      </div>
     </div>
   );
 }
