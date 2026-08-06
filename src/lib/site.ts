@@ -48,6 +48,7 @@ export const primaryNav: { label: string; to?: string; items?: NavItem[] }[] = [
       { label: "Code Examples", to: "/docs/examples", description: "Copy-paste snippets" },
     ],
   },
+  { label: "Scan URL", to: "/scanner" },
   { label: "Pricing", to: "/pricing" },
   { label: "Blog", to: "/blog" },
   { label: "About", to: "/about" },
@@ -57,10 +58,12 @@ export const footerColumns: { title: string; items: NavItem[] }[] = [
   {
     title: "Product",
     items: [
-      { label: "Scan QR codes", to: "/app" },
+      { label: "Scan QR codes", to: "/" },
+      { label: "Scan a URL", to: "/scanner" },
       { label: "Features", to: "/features" },
       { label: "API Documentation", to: "/docs/api" },
-      { label: "Pricing", to: "/pricing" },
+      { label: "Scan URL", to: "/scanner" },
+  { label: "Pricing", to: "/pricing" },
     ],
   },
   {
