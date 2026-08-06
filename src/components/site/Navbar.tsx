@@ -17,6 +17,7 @@ export function Navbar() {
   }, [open]);
 
   return (
+    <>
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <nav
         aria-label="Main"
@@ -90,6 +91,7 @@ export function Navbar() {
           </button>
         </div>
       </nav>
+    </header>
 
       {open && (
         <div className="fixed inset-0 z-50 lg:hidden">
@@ -176,6 +178,6 @@ export function Navbar() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
