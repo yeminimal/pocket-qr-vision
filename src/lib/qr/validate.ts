@@ -1,4 +1,5 @@
 export const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
+export const MAX_FILES = 5;
 export const ACCEPTED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 export function validateImageFile(file: File): string | null {
@@ -9,6 +10,12 @@ export function validateImageFile(file: File): string | null {
     return "Image is larger than 10 MB. Please choose a smaller file.";
   }
   return null;
+}
+
+export function formatBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
 export function isUrl(value: string): boolean {
