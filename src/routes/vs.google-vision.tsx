@@ -6,7 +6,7 @@ import { vsGoogleVision as page } from "@/content/pages";
 export const Route = createFileRoute("/vs/google-vision")({
   head: () => ({
     ...seo({
-      title: "Seeqr vs Google Cloud Vision — QR Scanning Compared",
+      title: "Seeqr vs Google Cloud Vision - QR Scanning Compared",
       description: "A focused on-device QR decoder versus a general cloud vision API. See which fits your job.",
       path: "/vs/google-vision",
     }),

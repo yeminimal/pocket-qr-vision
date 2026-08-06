@@ -6,7 +6,7 @@ import { blogIndex as page } from "@/content/pages";
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     ...seo({
-      title: "Blog — Seeqr",
+      title: "Blog - Seeqr",
       description: "Practical writing on QR codes, quishing and building lightweight software for low-end devices.",
       path: "/blog",
     }),

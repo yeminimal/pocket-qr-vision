@@ -16,7 +16,7 @@ function markDismissed() {
   try {
     window.localStorage.setItem(KEY, String(Date.now()));
   } catch {
-    // storage unavailable — nothing to persist
+    // storage unavailable - nothing to persist
   }
 }
 
@@ -50,11 +50,18 @@ export function ReviewPrompt({ onClose }: { onClose: () => void }) {
   if (!visible) return null;
 
   return (
-    <div
-      role="dialog"
-      aria-label="Rate Seeqr"
-      className="animate-in fade-in slide-in-from-bottom-2 fixed inset-x-4 bottom-4 z-50 mx-auto max-w-sm rounded-2xl border border-border bg-card p-6 shadow-sm duration-300 sm:inset-x-auto sm:right-6"
-    >
+    <div className="fixed inset-0 z-50 flex items-end justify-center p-4 sm:items-center">
+      <button
+        type="button"
+        aria-label="Dismiss"
+        onClick={close}
+        className="animate-in fade-in absolute inset-0 bg-background/80 backdrop-blur-sm duration-300"
+      />
+      <div
+        role="dialog"
+        aria-label="Rate Seeqr"
+        className="animate-in fade-in zoom-in-95 relative w-full max-w-sm rounded-2xl border border-border bg-popover p-6 shadow-lg duration-300"
+      >
       <button
         type="button"
         onClick={close}
@@ -65,7 +72,7 @@ export function ReviewPrompt({ onClose }: { onClose: () => void }) {
       </button>
 
       {sent ? (
-        <p className="pr-8 text-sm text-foreground">Thanks — that helps a lot.</p>
+        <p className="pr-8 text-sm text-foreground">Thanks - that helps a lot.</p>
       ) : (
         <>
           <p className="pr-8 text-[15px] font-semibold tracking-[-0.02em] text-foreground">
@@ -108,6 +115,7 @@ export function ReviewPrompt({ onClose }: { onClose: () => void }) {
           </div>
         </>
       )}
+      </div>
     </div>
   );
 }

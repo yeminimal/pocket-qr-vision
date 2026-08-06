@@ -3,7 +3,7 @@ import type { ContentPage } from "@/components/site/PageShell";
 const finalCta = {
   type: "cta" as const,
   heading: "Ready to build with Seeqr?",
-  sub: "Start on the free tier — no card required.",
+  sub: "Start on the free tier - no card required.",
   primary: { label: "Get an API key", to: "/pricing" },
   secondary: { label: "See code examples", to: "/docs/examples" },
 };
@@ -40,7 +40,7 @@ export const gettingStarted: ContentPage = {
       type: "steps",
       heading: "Scan in the app",
       items: [
-        { title: "Open the scanner", body: "Go to the scan page — nothing to install and no account needed." },
+        { title: "Open the scanner", body: "Go to the scan page - nothing to install and no account needed." },
         { title: "Choose an image", body: "Drag a screenshot in or tap to pick a JPG, PNG or WebP up to 10 MB." },
         { title: "Review the result", body: "Check the decoded value and safety signals, then copy, open or share it." },
       ],
@@ -91,7 +91,7 @@ export const apiDocs: ContentPage = {
       type: "prose",
       heading: "Base URL and authentication",
       paragraphs: [
-        "All requests go to https://api.tryseeqr.com/v1 over HTTPS. Authenticate with a bearer token in the Authorization header. Keys are secret — keep them on your server, never in client-side code.",
+        "All requests go to https://api.tryseeqr.com/v1 over HTTPS. Authenticate with a bearer token in the Authorization header. Keys are secret - keep them on your server, never in client-side code.",
       ],
     },
     {
@@ -106,7 +106,7 @@ export const apiDocs: ContentPage = {
     },
     {
       type: "table",
-      heading: "Request body — POST /v1/scan",
+      heading: "Request body - POST /v1/scan",
       columns: ["Field", "Type", "Notes"],
       rows: [
         ["image_url", "string", "Publicly reachable image URL. One of image_url or image_base64 is required."],
@@ -179,7 +179,7 @@ input.addEventListener("change", async () => {
       heading: "Good to know",
       items: [
         "Ships ESM and CJS builds with full TypeScript types",
-        "No native dependencies — runs in edge runtimes and workers",
+        "No native dependencies - runs in edge runtimes and workers",
         "Errors are typed, so you can branch on no_code_found vs rate_limited",
         "Keep server keys server-side; use decodeLocal for anything client-facing",
       ],
@@ -220,7 +220,7 @@ export const safetyLayer: ContentPage = {
       type: "prose",
       heading: "Limitations",
       paragraphs: [
-        "The score is a heuristic aid, not a verdict. A safe level means no known signals matched — it is not a promise that a destination is trustworthy, and a danger level can occasionally flag a legitimate link.",
+        "The score is a heuristic aid, not a verdict. A safe level means no known signals matched - it is not a promise that a destination is trustworthy, and a danger level can occasionally flag a legitimate link.",
         "Treat the safety layer as one input in your own review flow, and keep a human confirmation step for anything involving money or credentials.",
       ],
     },

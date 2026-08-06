@@ -1,6 +1,7 @@
 import jsQR from "jsqr";
 
 const MAX_DIMENSION = 1600;
+const MAX_CODES_PER_IMAGE = 4;
 
 async function fileToBitmap(file: File): Promise<{
   width: number;
@@ -33,7 +34,12 @@ async function fileToBitmap(file: File): Promise<{
   }
 }
 
-export async function decodeQrFromFile(file: File): Promise<string> {
+/**
+ * Decodes every QR code found in an image.
+ * jsQR returns one code per pass, so each found code is masked out and the
+ * image is re-scanned until nothing new appears.
+ */
+export async function decodeQrCodesFromFile(file: File): Promise<string[]> {
   const src = await fileToBitmap(file);
   if (!src.width || !src.height) {
     throw new Error("Image appears to be empty or corrupted.");
@@ -50,10 +56,37 @@ export async function decodeQrFromFile(file: File): Promise<string> {
   if (!ctx) throw new Error("Canvas is not supported in this browser.");
   src.draw(ctx, w, h);
 
-  const imageData = ctx.getImageData(0, 0, w, h);
-  const result = jsQR(imageData.data, w, h, { inversionAttempts: "attemptBoth" });
-  if (!result || !result.data) {
+  const found: string[] = [];
+
+  for (let pass = 0; pass < MAX_CODES_PER_IMAGE; pass += 1) {
+    const imageData = ctx.getImageData(0, 0, w, h);
+    const result = jsQR(imageData.data, w, h, { inversionAttempts: "attemptBoth" });
+    if (!result || !result.data) break;
+
+    if (!found.includes(result.data)) found.push(result.data);
+
+    const points = Object.values(result.location) as { x: number; y: number }[];
+    const xs = points.map((p) => p.x);
+    const ys = points.map((p) => p.y);
+    const pad = 4;
+    const x0 = Math.max(0, Math.min(...xs) - pad);
+    const y0 = Math.max(0, Math.min(...ys) - pad);
+    const x1 = Math.min(w, Math.max(...xs) + pad);
+    const y1 = Math.min(h, Math.max(...ys) + pad);
+    if (x1 - x0 < 2 || y1 - y0 < 2) break;
+
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+  }
+
+  return found;
+}
+
+/** Single-code convenience wrapper. Throws when nothing is found. */
+export async function decodeQrFromFile(file: File): Promise<string> {
+  const codes = await decodeQrCodesFromFile(file);
+  if (!codes.length) {
     throw new Error("No QR code found in the image. Try a clearer photo.");
   }
-  return result.data;
+  return codes[0];
 }
