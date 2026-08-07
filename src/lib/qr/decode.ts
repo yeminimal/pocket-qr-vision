@@ -1,7 +1,7 @@
 import jsQR from "jsqr";
 
 const MAX_DIMENSION = 1600;
-const MAX_CODES_PER_IMAGE = 4;
+const MAX_CODES_PER_IMAGE = 12;
 
 async function fileToBitmap(file: File): Promise<{
   width: number;
