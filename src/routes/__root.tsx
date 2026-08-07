@@ -11,6 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -85,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   { name: "author", content: "Williams Olayemi Martins" },
   { name: "application-name", content: "SeeQR" },
   { name: "robots", content: "index, follow" },
-  { name: "theme-color", content: "#0A0A0A" },
+  { name: "theme-color", content: "#14161a" },
 
   // Open Graph
   {
@@ -131,7 +132,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Geist+Mono:wght@400;500&display=swap",
   },
   {
     rel: "stylesheet",
@@ -188,6 +189,7 @@ function RootComponent() {
         </div>
         <Footer />
       </div>
+      <Toaster />
     </QueryClientProvider>
   );
 }
