@@ -5,13 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
+ * Liquid Glass design system.
  *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
+ * @theme inline maps CSS custom properties to Tailwind utilities.
+ * :root holds the light theme, .dark holds the default dark theme.
+ * All color values use oklch.
  */
 
 @theme inline {
@@ -56,7 +54,7 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  /* Lime brand: always lime green with black content on top. */
+  /* Prismatic accent used sparingly for emphasis. */
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
   --color-success: var(--success);
@@ -64,96 +62,137 @@
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
 
-  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.75rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: oklch(0.1996 0.0086 264.36);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.1996 0.0086 264.36);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  /* Light mode: black surfaces for CTAs, lime content on top. */
-  --primary: oklch(0.145 0 0);
-  --primary-foreground: oklch(0.938 0.203 122.18);
-  --primary-soft: oklch(0.96 0.05 122.18);
-  --secondary: oklch(0.968 0 0);
-  --secondary-foreground: oklch(0.185 0 0);
-  --muted: oklch(0.968 0 0);
-  --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.965 0 0);
-  --accent-foreground: oklch(0.185 0 0);
-  --destructive: oklch(0.637 0.237 25.33);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.145 0 0 / 10%);
-  --input: oklch(0.145 0 0 / 14%);
-  --ring: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.1996 0.0086 264.36);
+  --primary: oklch(0.1996 0.0086 264.36);
+  --primary-foreground: oklch(0.9843 0.0009 264.55);
+  --primary-soft: oklch(0.9681 0.0025 264.54);
+  --secondary: oklch(0.9681 0.0025 264.54);
+  --secondary-foreground: oklch(0.1996 0.0086 264.36);
+  --muted: oklch(0.9681 0.0025 264.54);
+  --muted-foreground: oklch(0.5363 0.0335 264.24);
+  --accent: oklch(0.9681 0.0025 264.54);
+  --accent-foreground: oklch(0.1996 0.0086 264.36);
+  --destructive: oklch(0.6356 0.2082 25.38);
+  --destructive-foreground: oklch(0.9843 0.0009 264.55);
+  --border: oklch(0.9278 0.0058 264.53);
+  --input: oklch(0.9278 0.0058 264.53);
+  --ring: oklch(0.1996 0.0086 264.36);
   --success: oklch(0.696 0.17 162.48);
-  --success-foreground: oklch(0.145 0 0);
+  --success-foreground: oklch(0.1996 0.0086 264.36);
   --warning: oklch(0.769 0.166 70.08);
-  --warning-foreground: oklch(0.145 0 0);
-  --chart-1: oklch(0.938 0.203 122.18);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.6 0 0);
-  --chart-4: oklch(0.769 0.166 70.08);
-  --chart-5: oklch(0.45 0 0);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.145 0 0);
-  --sidebar-primary-foreground: oklch(0.938 0.203 122.18);
-  --sidebar-accent: oklch(0.965 0 0);
-  --sidebar-accent-foreground: oklch(0.185 0 0);
-  --sidebar-border: oklch(0.145 0 0 / 10%);
-  --sidebar-ring: oklch(0.145 0 0);
-  --brand: oklch(0.938 0.203 122.18);
-  --brand-foreground: oklch(0 0 0);
+  --warning-foreground: oklch(0.1996 0.0086 264.36);
+  --chart-1: oklch(0.8238 0.0852 259.79);
+  --chart-2: oklch(0.801 0.0766 187.71);
+  --chart-3: oklch(0.9351 0.038 221.75);
+  --chart-4: oklch(0.5363 0.0335 264.24);
+  --chart-5: oklch(0.1996 0.0086 264.36);
+  --sidebar: oklch(0.9681 0.0025 264.54);
+  --sidebar-foreground: oklch(0.1996 0.0086 264.36);
+  --sidebar-primary: oklch(0.1996 0.0086 264.36);
+  --sidebar-primary-foreground: oklch(0.9843 0.0009 264.55);
+  --sidebar-accent: oklch(0.9681 0.0025 264.54);
+  --sidebar-accent-foreground: oklch(0.1996 0.0086 264.36);
+  --sidebar-border: oklch(0.9278 0.0058 264.53);
+  --sidebar-ring: oklch(0.1996 0.0086 264.36);
+  --brand: oklch(0.801 0.0766 187.71);
+  --brand-foreground: oklch(0.1996 0.0086 264.36);
+
+  /* Glass morphism (light) */
+  --glass-background: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --glass-blur: blur(16px);
+  --glass-heading-gradient: linear-gradient(
+    135deg,
+    oklch(0.1996 0.0086 264.36) 0%,
+    oklch(0.55 0.0766 187.71) 30%,
+    oklch(0.52 0.0852 259.79) 60%,
+    oklch(0.1996 0.0086 264.36) 100%
+  );
+  --prismatic-gradient: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(128, 208, 199, 0.16) 25%,
+    rgba(161, 196, 253, 0.16) 50%,
+    rgba(194, 233, 251, 0.16) 75%,
+    rgba(255, 255, 255, 0.6) 100%
+  );
 }
 
 .dark {
-  /* Dark editorial: near-black surfaces, one lime accent. */
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.965 0 0);
-  --card: oklch(0.185 0 0);
-  --card-foreground: oklch(0.965 0 0);
-  --popover: oklch(0.185 0 0);
-  --popover-foreground: oklch(0.965 0 0);
-  --primary: oklch(0.938 0.203 122.18);
-  --primary-foreground: oklch(0 0 0);
-  --primary-soft: oklch(0.24 0.05 122.18);
-  --secondary: oklch(0.21 0 0);
-  --secondary-foreground: oklch(0.965 0 0);
-  --muted: oklch(0.21 0 0);
-  --muted-foreground: oklch(1 0 0 / 50%);
-  --accent: oklch(0.21 0 0);
-  --accent-foreground: oklch(0.965 0 0);
-  --destructive: oklch(0.637 0.237 25.33);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.938 0.203 122.18);
-  --success: oklch(0.696 0.17 162.48);
-  --success-foreground: oklch(0 0 0);
-  --warning: oklch(0.769 0.166 70.08);
-  --warning-foreground: oklch(0 0 0);
-  --chart-1: oklch(0.938 0.203 122.18);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.7 0 0);
-  --chart-4: oklch(0.769 0.166 70.08);
-  --chart-5: oklch(0.5 0 0);
-  --sidebar: oklch(0.185 0 0);
-  --sidebar-foreground: oklch(0.965 0 0);
-  --sidebar-primary: oklch(0.938 0.203 122.18);
-  --sidebar-primary-foreground: oklch(0 0 0);
-  --sidebar-accent: oklch(0.21 0 0);
-  --sidebar-accent-foreground: oklch(0.965 0 0);
-  --sidebar-border: oklch(1 0 0 / 8%);
-  --sidebar-ring: oklch(0.938 0.203 122.18);
-  --brand: oklch(0.938 0.203 122.18);
-  --brand-foreground: oklch(0 0 0);
+  --background: oklch(0.1996 0.0086 264.36);
+  --foreground: oklch(0.9843 0.0009 264.55);
+  --card: oklch(0.221 0.0102 264.34);
+  --card-foreground: oklch(0.9843 0.0009 264.55);
+  --popover: oklch(0.221 0.0102 264.34);
+  --popover-foreground: oklch(0.9843 0.0009 264.55);
+  --primary: oklch(0.9843 0.0009 264.55);
+  --primary-foreground: oklch(0.1996 0.0086 264.36);
+  --primary-soft: oklch(0.2622 0.0133 264.31);
+  --secondary: oklch(0.2622 0.0133 264.31);
+  --secondary-foreground: oklch(0.9843 0.0009 264.55);
+  --muted: oklch(0.2622 0.0133 264.31);
+  --muted-foreground: oklch(0.6977 0.0178 264.45);
+  --accent: oklch(0.2622 0.0133 264.31);
+  --accent-foreground: oklch(0.9843 0.0009 264.55);
+  --destructive: oklch(0.3901 0.1297 25.57);
+  --destructive-foreground: oklch(0.9843 0.0009 264.55);
+  --border: oklch(0.2622 0.0133 264.31);
+  --input: oklch(0.2622 0.0133 264.31);
+  --ring: oklch(0.9843 0.0009 264.55);
+  --success: oklch(0.801 0.0766 187.71);
+  --success-foreground: oklch(0.1996 0.0086 264.36);
+  --warning: oklch(0.85 0.12 85);
+  --warning-foreground: oklch(0.1996 0.0086 264.36);
+  --chart-1: oklch(0.8238 0.0852 259.79);
+  --chart-2: oklch(0.801 0.0766 187.71);
+  --chart-3: oklch(0.9351 0.038 221.75);
+  --chart-4: oklch(0.6977 0.0178 264.45);
+  --chart-5: oklch(0.9843 0.0009 264.55);
+  --sidebar: oklch(0.221 0.0102 264.34);
+  --sidebar-foreground: oklch(0.9843 0.0009 264.55);
+  --sidebar-primary: oklch(0.9843 0.0009 264.55);
+  --sidebar-primary-foreground: oklch(0.1996 0.0086 264.36);
+  --sidebar-accent: oklch(0.2622 0.0133 264.31);
+  --sidebar-accent-foreground: oklch(0.9843 0.0009 264.55);
+  --sidebar-border: oklch(0.2622 0.0133 264.31);
+  --sidebar-ring: oklch(0.9843 0.0009 264.55);
+  --brand: oklch(0.801 0.0766 187.71);
+  --brand-foreground: oklch(0.1996 0.0086 264.36);
+
+  /* Glass morphism (dark) */
+  --glass-background: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --glass-blur: blur(16px);
+  --glass-heading-gradient: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(128, 208, 199, 0.85) 25%,
+    rgba(161, 196, 253, 0.85) 50%,
+    rgba(194, 233, 251, 0.85) 75%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  --prismatic-gradient: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(128, 208, 199, 0.12) 25%,
+    rgba(161, 196, 253, 0.12) 50%,
+    rgba(194, 233, 251, 0.12) 75%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
 }
 
 @layer base {
@@ -163,36 +202,105 @@
 
   body {
     font-family: var(--font-sans);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    line-height: 1.6;
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
 
-  /* Manrope tops out at Semibold in this system: never Bold or heavier. */
+  /* Liquid Glass typography stays light: never bold. */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
 
+  .font-semibold,
   .font-bold,
   .font-extrabold,
   .font-black {
-    font-weight: 600;
+    font-weight: 300;
   }
 }
 
 @utility label-caps {
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+/* Core glass surface. */
+@utility liquid-glass {
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--prismatic-gradient);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Static glass panel (no hover sheen). */
+@utility glass-panel {
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+@utility glass-heading {
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  background: var(--glass-heading-gradient);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass-subheading {
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: color-mix(in oklab, var(--color-foreground) 85%, transparent);
+}
+
+@utility glass-body {
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-muted-foreground);
+}
+
+@utility glass-accent {
+  background: linear-gradient(
+    90deg,
+    rgba(128, 208, 199, 1) 0%,
+    rgba(161, 196, 253, 1) 50%,
+    rgba(194, 233, 251, 1) 100%
+  );
+  background-clip: text;
+  color: transparent;
+  font-weight: 400;
 }
 
 @media (prefers-reduced-motion: reduce) {
