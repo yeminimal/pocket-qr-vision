@@ -75,7 +75,7 @@ export function ReviewPrompt({ onClose }: { onClose: () => void }) {
         <p className="pr-8 text-sm text-foreground">Thanks - that helps a lot.</p>
       ) : (
         <>
-          <p className="pr-8 text-[15px] font-semibold tracking-[-0.02em] text-foreground">
+          <p className="pr-8 text-[15px] font-light tracking-[-0.02em] text-foreground">
             How was that scan?
           </p>
           <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
@@ -102,13 +102,13 @@ export function ReviewPrompt({ onClose }: { onClose: () => void }) {
             <button
               type="button"
               onClick={close}
-              className="text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-xs font-light text-muted-foreground transition-colors hover:text-foreground"
             >
               Not now
             </button>
             <a
               href="/support"
-              className="text-xs font-medium text-primary underline-offset-4 hover:underline"
+              className="text-xs font-light text-primary underline-offset-4 hover:underline"
             >
               Send feedback
             </a>

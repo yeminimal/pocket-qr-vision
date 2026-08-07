@@ -65,7 +65,7 @@ export function Dropzone({ onFiles, disabled }: DropzoneProps) {
       />
       <Upload className="h-6 w-6 text-muted-foreground transition-colors group-hover:text-primary" />
       <div className="space-y-2">
-        <p className="text-[15px] font-medium tracking-[-0.02em] text-foreground">
+        <p className="text-[15px] font-light tracking-[-0.02em] text-foreground">
           Drag up to {MAX_FILES} photos or click to browse
         </p>
         <p className="font-mono text-xs tracking-[0.02em] text-muted-foreground">

@@ -71,7 +71,7 @@ function Home() {
   return (
     <main>
       <section className="mx-auto flex max-w-2xl flex-col items-center px-4 pt-16 pb-24 sm:pt-24">
-        <h1 className="max-w-xl text-center text-[2.5rem] leading-[1.1] font-semibold tracking-[-0.03em] text-foreground sm:text-[3.5rem]">
+        <h1 className="max-w-xl text-center text-[2.5rem] leading-[1.1] font-light tracking-[-0.03em] text-foreground sm:text-[3.5rem]">
           Scan any QR code from an image
         </h1>
         <p className="mt-5 text-center text-base leading-relaxed tracking-[-0.01em] text-muted-foreground sm:text-lg">

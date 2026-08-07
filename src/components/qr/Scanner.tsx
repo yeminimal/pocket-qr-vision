@@ -148,10 +148,10 @@ export function Scanner() {
         )}
 
         {scanning && (
-          <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+          <div className="rounded-2xl glass-panel p-6 sm:p-8">
             <div className="flex items-center gap-3">
               <Loader2 className="h-4 w-4 animate-spin text-primary" />
-              <p className="text-sm font-medium text-foreground">
+              <p className="text-sm font-light text-foreground">
                 Scanning {phase.current} of {phase.total}...
               </p>
             </div>

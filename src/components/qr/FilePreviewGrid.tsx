@@ -24,7 +24,7 @@ export function FilePreviewGrid({
         <li
           key={item.id}
           style={{ animationDelay: `${index * 50}ms` }}
-          className="animate-in fade-in slide-in-from-bottom-2 group relative overflow-hidden rounded-2xl border border-border bg-card duration-300"
+          className="animate-in fade-in slide-in-from-bottom-2 group relative overflow-hidden rounded-2xl glass-panel duration-300"
         >
           <img
             src={item.previewUrl}
@@ -32,7 +32,7 @@ export function FilePreviewGrid({
             className="aspect-square w-full object-cover"
           />
           <div className="p-3">
-            <p className="truncate text-xs font-medium text-foreground">{item.file.name}</p>
+            <p className="truncate text-xs font-light text-foreground">{item.file.name}</p>
             <p className="mt-0.5 font-mono text-[11px] text-muted-foreground">
               {formatBytes(item.file.size)}
             </p>
