@@ -46,10 +46,10 @@ function CodeRow({ label, data }: { label: string; data: string }) {
   };
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+    <div className="rounded-2xl glass-panel p-6 sm:p-8">
       <div className="flex items-center gap-2">
         <span className="label-caps text-muted-foreground">{label}</span>
-        <span className="ml-auto inline-flex items-center gap-1.5 rounded-lg bg-muted px-2 py-1 text-[11px] font-medium text-muted-foreground">
+        <span className="ml-auto inline-flex items-center gap-1.5 rounded-lg bg-muted px-2 py-1 text-[11px] font-light text-muted-foreground">
           {url ? <LinkIcon className="h-3 w-3" /> : <Type className="h-3 w-3" />}
           {url ? "URL" : "Text"}
         </span>
@@ -102,7 +102,7 @@ export function ResultList({ results }: { results: ScanResult[] }) {
           return (
             <div
               key={`${result.fileName}-${index}`}
-              className="animate-in fade-in rounded-2xl border border-border bg-card p-6 duration-300 sm:p-8"
+              className="animate-in fade-in rounded-2xl glass-panel p-6 duration-300 sm:p-8"
             >
               <span className="label-caps text-muted-foreground">
                 {position}. {result.fileName}

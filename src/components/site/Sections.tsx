@@ -74,7 +74,7 @@ function Heading({ heading, sub }: { heading?: string; sub?: string }) {
   return (
     <div className="mb-8 max-w-2xl">
       {heading && (
-        <h2 className="text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">{heading}</h2>
+        <h2 className="text-2xl font-light leading-tight tracking-tight sm:text-3xl">{heading}</h2>
       )}
       {sub && <p className="mt-3 text-base leading-relaxed text-muted-foreground">{sub}</p>}
     </div>
@@ -115,7 +115,7 @@ function SectionBody({ section }: { section: Section }) {
           {section.items.map((s) => (
             <li key={s.label} className="rounded-xl bg-primary-soft p-5">
               <Icon name={s.icon} className="h-5 w-5 text-primary" />
-              <p className="mt-3 text-2xl font-semibold tracking-tight">{s.value}</p>
+              <p className="mt-3 text-2xl font-light tracking-tight">{s.value}</p>
               <p className="mt-1 text-sm text-muted-foreground">{s.label}</p>
             </li>
           ))}
@@ -136,15 +136,15 @@ function SectionBody({ section }: { section: Section }) {
             {section.items.map((item) => (
               <li
                 key={item.title}
-                className="rounded-xl border border-border bg-card p-6 transition-shadow hover:shadow-md"
+                className="rounded-xl glass-panel p-6 transition-shadow hover:shadow-md"
               >
                 <Icon name={item.icon} className="h-6 w-6 text-primary" />
-                <h3 className="mt-3 text-base font-medium">{item.title}</h3>
+                <h3 className="mt-3 text-base font-light">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
                 {item.to && (
                   <Link
                     to={item.to}
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-light text-primary hover:underline"
                   >
                     Learn more <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
@@ -162,11 +162,11 @@ function SectionBody({ section }: { section: Section }) {
           <Heading heading={section.heading} sub={section.sub} />
           <ol className="grid gap-4 sm:grid-cols-3">
             {section.items.map((s, i) => (
-              <li key={s.title} className="rounded-xl border border-border bg-card p-6">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
+              <li key={s.title} className="rounded-xl glass-panel p-6">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-light text-primary-foreground">
                   {i + 1}
                 </span>
-                <h3 className="mt-4 text-base font-medium">{s.title}</h3>
+                <h3 className="mt-4 text-base font-light">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
               </li>
             ))}
@@ -194,12 +194,12 @@ function SectionBody({ section }: { section: Section }) {
         <div>
           <Heading heading={section.heading} sub={section.sub} />
           {/* Desktop table */}
-          <div className="hidden overflow-hidden rounded-xl border border-border sm:block">
+          <div className="hidden overflow-hidden glass-panel rounded-xl sm:block">
             <table className="w-full text-left text-sm">
               <thead className="bg-muted">
                 <tr>
                   {section.columns.map((c) => (
-                    <th key={c} scope="col" className="px-4 py-3 font-medium">
+                    <th key={c} scope="col" className="px-4 py-3 font-light">
                       {c}
                     </th>
                   ))}
@@ -211,7 +211,7 @@ function SectionBody({ section }: { section: Section }) {
                     {row.map((cell, j) => (
                       <td
                         key={j}
-                        className={j === 0 ? "px-4 py-3 font-medium" : "px-4 py-3 text-muted-foreground"}
+                        className={j === 0 ? "px-4 py-3 font-light" : "px-4 py-3 text-muted-foreground"}
                       >
                         <Cell value={cell} />
                       </td>
@@ -224,8 +224,8 @@ function SectionBody({ section }: { section: Section }) {
           {/* Mobile cards */}
           <ul className="space-y-3 sm:hidden">
             {section.rows.map((row, i) => (
-              <li key={i} className="rounded-xl border border-border bg-card p-4">
-                <p className="text-sm font-medium">{row[0]}</p>
+              <li key={i} className="rounded-xl glass-panel p-4">
+                <p className="text-sm font-light">{row[0]}</p>
                 <dl className="mt-2 space-y-1">
                   {row.slice(1).map((cell, j) => (
                     <div key={j} className="flex justify-between gap-3 text-sm">
@@ -258,7 +258,7 @@ function SectionBody({ section }: { section: Section }) {
       return (
         <div>
           <Heading heading={section.heading} sub={section.sub} />
-          <pre className="overflow-x-auto rounded-xl border border-border bg-muted p-4 text-xs leading-relaxed">
+          <pre className="overflow-x-auto glass-panel rounded-xl bg-muted p-4 text-xs leading-relaxed">
             <code>{section.code}</code>
           </pre>
         </div>
@@ -276,8 +276,8 @@ function SectionBody({ section }: { section: Section }) {
                   tier.featured ? "border-primary shadow-md" : "border-border"
                 }`}
               >
-                <h3 className="text-base font-medium">{tier.name}</h3>
-                <p className="mt-2 text-3xl font-semibold tracking-tight">{tier.price}</p>
+                <h3 className="text-base font-light">{tier.name}</h3>
+                <p className="mt-2 text-3xl font-light tracking-tight">{tier.price}</p>
                 {tier.note && <p className="mt-1 text-sm text-muted-foreground">{tier.note}</p>}
                 <ul className="mt-5 flex-1 space-y-2">
                   {tier.features.map((f) => (
@@ -289,7 +289,7 @@ function SectionBody({ section }: { section: Section }) {
                 </ul>
                 <Link
                   to={tier.cta.to}
-                  className={`mt-6 flex h-11 items-center justify-center rounded-lg px-6 text-sm font-medium transition-colors ${
+                  className={`mt-6 flex h-11 items-center justify-center rounded-lg px-6 text-sm font-light transition-colors ${
                     tier.featured
                       ? "bg-primary text-primary-foreground hover:opacity-90"
                       : "border border-primary text-primary hover:bg-primary-soft"
@@ -306,19 +306,19 @@ function SectionBody({ section }: { section: Section }) {
     case "cta":
       return (
         <div className="rounded-2xl bg-primary-soft px-6 py-12 text-center">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{section.heading}</h2>
+          <h2 className="text-2xl font-light tracking-tight sm:text-3xl">{section.heading}</h2>
           {section.sub && <p className="mt-3 text-base text-muted-foreground">{section.sub}</p>}
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               to={section.primary.to}
-              className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto"
+              className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-primary px-6 text-sm font-light text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto"
             >
               {section.primary.label}
             </Link>
             {section.secondary && (
               <Link
                 to={section.secondary.to}
-                className="inline-flex h-12 w-full items-center justify-center rounded-lg border border-primary px-6 text-sm font-medium text-primary transition-colors hover:bg-background sm:w-auto"
+                className="inline-flex h-12 w-full items-center justify-center rounded-lg border border-primary px-6 text-sm font-light text-primary transition-colors hover:bg-background sm:w-auto"
               >
                 {section.secondary.label}
               </Link>
@@ -338,12 +338,12 @@ function Cell({ value }: { value: string }) {
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <li className="rounded-xl border border-border bg-card">
+    <li className="rounded-xl glass-panel">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-medium"
+        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-light"
       >
         {q}
         <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />

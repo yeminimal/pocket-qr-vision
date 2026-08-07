@@ -57,7 +57,7 @@ function UrlScannerPage() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://example.com/verify"
-          className="min-h-12 w-full rounded-2xl border border-border bg-card px-4 font-mono text-sm text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          className="min-h-12 w-full rounded-2xl glass-panel px-4 font-mono text-sm text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
         />
         <Button type="submit" disabled={loading} className="min-h-12 w-full gap-2 text-[15px]">
           <ShieldCheck className="h-4 w-4" />

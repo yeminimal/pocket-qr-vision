@@ -18,7 +18,7 @@ export function SafetyBadge({
 }) {
   if (loading) {
     return (
-      <span className="inline-flex items-center gap-2 rounded-xl border border-border bg-muted px-3 py-1.5 text-xs font-medium text-muted-foreground">
+      <span className="inline-flex items-center gap-2 glass-panel rounded-xl bg-muted px-3 py-1.5 text-xs font-light text-muted-foreground">
         <Loader2 className="h-3.5 w-3.5 animate-spin" />
         Checking link
       </span>
@@ -32,7 +32,7 @@ export function SafetyBadge({
   if (!detailed) {
     return (
       <span
-        className={`inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-xs font-medium ${cls}`}
+        className={`inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-xs font-light ${cls}`}
       >
         <Icon className="h-3.5 w-3.5" />
         {copy.label}
@@ -45,7 +45,7 @@ export function SafetyBadge({
       <div className="flex items-start gap-3">
         <Icon className="mt-0.5 h-5 w-5 shrink-0" />
         <div className="min-w-0">
-          <p className="text-[15px] font-medium tracking-[-0.02em]">{report.headline}</p>
+          <p className="text-[15px] font-light tracking-[-0.02em]">{report.headline}</p>
           <p className="mt-1 text-sm text-muted-foreground">{copy.note}</p>
           <ul className="mt-4 space-y-1.5">
             {report.signals.map((signal) => (
