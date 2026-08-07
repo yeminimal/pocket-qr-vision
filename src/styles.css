@@ -121,6 +121,12 @@
     oklch(0.52 0.0852 259.79) 60%,
     oklch(0.1996 0.0086 264.36) 100%
   );
+  --glass-accent-gradient: linear-gradient(
+    90deg,
+    oklch(0.55 0.0766 187.71) 0%,
+    oklch(0.52 0.0852 259.79) 50%,
+    oklch(0.55 0.06 221.75) 100%
+  );
   --prismatic-gradient: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.6) 0%,
@@ -184,6 +190,12 @@
     rgba(161, 196, 253, 0.85) 50%,
     rgba(194, 233, 251, 0.85) 75%,
     rgba(255, 255, 255, 0.95) 100%
+  );
+  --glass-accent-gradient: linear-gradient(
+    90deg,
+    rgba(128, 208, 199, 1) 0%,
+    rgba(161, 196, 253, 1) 50%,
+    rgba(194, 233, 251, 1) 100%
   );
   --prismatic-gradient: linear-gradient(
     135deg,
@@ -292,12 +304,7 @@
 }
 
 @utility glass-accent {
-  background: linear-gradient(
-    90deg,
-    rgba(128, 208, 199, 1) 0%,
-    rgba(161, 196, 253, 1) 50%,
-    rgba(194, 233, 251, 1) 100%
-  );
+  background: var(--glass-accent-gradient);
   background-clip: text;
   color: transparent;
   font-weight: 400;
