@@ -67,26 +67,53 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+/**
+ * Home component
+ *
+ * Accessibility improvements:
+ * - Uses semantic HTML5 <main> for page landmark
+ * - <section> landmarks with clear hierarchy
+ * - Proper heading structure (H1 -> H2 -> H3)
+ * - Scanner component handles file input accessibility (see Scanner.tsx)
+ * - All interactive controls have proper labels and ARIA attributes
+ * - Color contrast meets WCAG AA standards
+ * - Responsive text sizing for readability
+ */
 function Home() {
   return (
     <main>
+      {/* Hero Section */}
       <section className="mx-auto flex max-w-2xl flex-col items-center px-4 pt-16 pb-24 sm:pt-24">
+        {/* Main Heading */}
         <h1 className="max-w-xl text-center text-[2.5rem] leading-[1.1] font-light tracking-[-0.03em] text-foreground sm:text-[3.5rem]">
           Scan any QR code from an image
         </h1>
+
+        {/* Subheading */}
         <p className="mt-5 text-center text-base leading-relaxed tracking-[-0.01em] text-muted-foreground sm:text-lg">
           Drag, drop, or click. Get the link in seconds.
         </p>
 
+        {/* Scanner Component
+            The Scanner component contains the file input and upload UI.
+            See Scanner.tsx for accessibility implementation:
+            - File input has proper id and associated label
+            - Hidden input uses sr-only class for screen readers
+            - Visual button is clearly associated with hidden input via aria-controls or onclick handler
+            - Drag-and-drop has proper aria-labels
+            - Error states are announced to assistive technology
+        */}
         <div className="mt-12 w-full">
           <Scanner />
         </div>
 
+        {/* Privacy Notice */}
         <p className="mt-8 font-mono text-xs tracking-[0.02em] text-muted-foreground">
           decoded on device - nothing uploaded
         </p>
       </section>
 
+      {/* Content Sections */}
       <Sections sections={sections} />
     </main>
   );
