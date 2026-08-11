@@ -1,0 +1,445 @@
+# Seeqr: Privacy-First QR Code Scanner with AI-Powered Phishing Detection
+
+Seeqr is a privacy-first QR code scanner web application with integrated phishing detection. Scan QR codes instantly without storing your data. Available as a web app, npm packages (free and pro), and REST API.
+
+**Website**: [https://tryseeqr.vercel.app](https://tryseeqr.vercel.app)  
+**Status**: Active Development (v1.0+)  
+**Repository**: [https://github.com/yeminimal/seeqr](https://github.com/yeminimal/seeqr)
+
+---
+
+## About Seeqr
+
+Seeqr provides instant QR code detection and analysis with built-in safety checks to protect users from phishing attacks and malware. Whether you're an individual user scanning a code in the wild or a developer integrating QR scanning into your application, Seeqr offers free and enterprise options.
+
+### Key Features
+
+- **Instant QR Scanning**: Real-time detection from photos or camera
+- **Phishing Detection**: Identifies typosquatting, spoofed domains, and suspicious URLs
+- **Malware Checking**: Integrates VirusTotal and URLhaus databases
+- **Privacy First**: No data storage—all processing happens locally or encrypted
+- **Multi-Photo Upload**: Process up to five images at once
+- **Progressive Web App**: Installable offline-capable application
+- **Accessible**: Full keyboard navigation and screen reader support
+
+---
+
+## Getting Started
+
+### Web App (Free)
+
+1. Visit [https://tryseeqr.vercel.app](https://tryseeqr.vercel.app)
+2. Upload an image or use your camera
+3. Get instant QR code results with safety analysis
+
+### NPM Package (Free)
+
+```bash
+npm install seeqr
+```
+
+```javascript
+import { scanQR } from 'seeqr';
+const result = await scanQR(file);
+```
+
+### NPM Package Pro (with safety layer)
+
+```bash
+npm install seeqr-pro
+```
+
+```javascript
+import { scanQRWithSafety } from 'seeqr-pro';
+const result = await scanQRWithSafety(file, {
+  checkPhishing: true,
+  realTimeReputation: true
+});
+```
+
+### REST API
+
+```bash
+curl -X POST https://api.seeqr.io/v1/scan \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "image_base64": "...",
+    "include_safety": true
+  }'
+```
+
+---
+
+## Navigation
+
+**Core Pages**:
+- [Home](https://tryseeqr.vercel.app/) - Main web app
+- [API Documentation](https://api.seeqr.io/docs) - Full endpoint reference
+- [Examples & Guides](https://tryseeqr.vercel.app/docs/examples) - Integration samples
+- [Blog](https://tryseeqr.vercel.app/blog) - Latest features and updates
+- [Status Page](https://status.seeqr.io) - Service health
+
+**Resources**:
+- [Security Policy](https://tryseeqr.vercel.app/security) - Vulnerability reporting
+- [Contributing Guide](https://github.com/yeminimal/seeqr/blob/main/CONTRIBUTING.md) - How to contribute
+- [Code of Conduct](https://github.com/yeminimal/seeqr/blob/main/CODE_OF_CONDUCT.md) - Community standards
+
+---
+
+## API Reference
+
+### API Base URL
+[https://api.seeqr.io/v1](https://api.seeqr.io/v1)
+
+**Full Documentation**: [https://api.seeqr.io/docs](https://api.seeqr.io/docs)
+
+### Scan QR Code Endpoint
+
+**POST** `/v1/scan`
+
+Decode a QR code from an image and optionally check for phishing threats.
+
+**Request Headers**:
+```
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+**Request Body**:
+```json
+{
+  "image_base64": "base64-encoded image data",
+  "include_safety": true,
+  "include_metadata": false
+}
+```
+
+**Response Example**:
+```json
+{
+  "success": true,
+  "qr_code": {
+    "raw_data": "https://example.com",
+    "url": "https://example.com",
+    "type": "url"
+  },
+  "safety": {
+    "is_safe": true,
+    "risk_level": "low",
+    "phishing_probability": 0.02,
+    "malware_detected": false,
+    "warnings": []
+  },
+  "metadata": {
+    "scan_time_ms": 245,
+    "image_size_bytes": 125000,
+    "qr_version": 10
+  }
+}
+```
+
+### Check URL Safety Endpoint
+
+**POST** `/v1/safety/check`
+
+Analyze a URL for phishing, malware, and reputation risks without scanning a QR code.
+
+**Request**:
+```json
+{
+  "url": "https://example.com"
+}
+```
+
+**Response**:
+```json
+{
+  "url": "https://example.com",
+  "is_safe": true,
+  "risk_level": "low",
+  "risk_score": 5,
+  "threats": [],
+  "confidence": 0.98
+}
+```
+
+### Authentication
+
+All API requests require an API key passed as a Bearer token:
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
+
+**Get an API Key**: [https://dashboard.seeqr.io/api-keys](https://dashboard.seeqr.io/api-keys)
+
+### Rate Limits
+
+| Tier | Requests/Month | Price | Support |
+|------|---------------|-------|---------|
+| Free | 100 | $0 | Community |
+| Starter | 10,000 | $49 | Email |
+| Pro | 100,000 | $149 | Priority |
+| Business | 1,000,000 | $499 | Dedicated |
+| Enterprise | Unlimited | Custom | 99.99% SLA |
+
+**Rate Limit Headers**:
+```
+X-RateLimit-Limit: requests per period
+X-RateLimit-Remaining: requests remaining
+X-RateLimit-Reset: reset timestamp (Unix)
+```
+
+### Error Codes
+
+| Code | Meaning |
+|------|---------|
+| 200 | Successful scan |
+| 400 | Invalid image or parameters |
+| 401 | Invalid API key |
+| 429 | Rate limit exceeded |
+| 500 | Server error |
+| 503 | Service unavailable (maintenance) |
+
+---
+
+## SDK & Library Support
+
+### Currently Available
+
+- **JavaScript/TypeScript**: [npm/seeqr](https://www.npmjs.com/package/seeqr)
+- **Pro Tier**: [npm/seeqr-pro](https://www.npmjs.com/package/seeqr-pro)
+
+### Coming Soon
+
+- **Python**: `pip install seeqr`
+- **Go**: `go get github.com/seeqr/go-sdk`
+- **Rust**: Add `seeqr = "0.1"` to `Cargo.toml`
+
+---
+
+## Use Cases
+
+Seeqr is designed for diverse scenarios across industries:
+
+1. **E-Commerce & Retail**: Inventory tracking, product verification, and POS integration
+2. **Healthcare**: Verify patient information from QR codes and medication tracking
+3. **Finance & Payments**: Check payment QR codes for phishing before processing
+4. **Logistics & Shipping**: Decode and track shipment QR codes
+5. **Security & Auditing**: Scan QR codes to audit them for threats before interaction
+6. **Mobile App Development**: Integrate QR scanning into any native or web app
+7. **Accessibility**: Help visually-impaired users understand QR code contents
+8. **Analytics & Engagement**: Track QR code usage patterns and user behavior
+
+---
+
+## Safety & Security Features
+
+### Phishing Detection
+
+Detects common QR-based phishing attacks:
+- **Typosquatting**: Identifies look-alike domains (e.g., `amaz0n.com` vs `amazon.com`)
+- **Unicode/Punycode Abuse**: Catches homograph attacks using similar characters
+- **Suspicious Patterns**: Flags unusual domain structures and naming
+- **New Domain Risk**: Identifies domains registered less than 7 days ago
+- **SSL Validation**: Checks for missing or invalid certificates
+
+### Malware Detection
+
+Leverages multiple databases:
+- **VirusTotal Integration**: Cross-references URL against 90+ antivirus engines
+- **URLhaus Database**: Checks against known malware distribution sites
+- **Signature Matching**: Detects known malware indicators
+- **File Type Analysis**: Identifies suspicious executable and archive types
+
+### Domain Validation
+
+Comprehensive domain reputation checks:
+- Domain registration age and history
+- WHOIS privacy status
+- SSL/TLS certificate validity and issuer reputation
+- DNS record validation
+- Historical threat intelligence
+
+---
+
+## Pricing & Plans
+
+### Free Tier
+- 100 scans/month
+- Web UI only
+- Community support via [GitHub Discussions](https://github.com/yeminimal/seeqr/discussions)
+- No credit card required
+
+### Starter
+- 10,000 scans/month
+- REST API access
+- Basic safety layer
+- Email support
+- **$49/month**
+
+### Pro
+- 100,000 scans/month
+- Full safety layer (phishing + malware)
+- Analytics dashboard
+- Priority email support
+- **$149/month**
+
+### Business
+- 1,000,000 scans/month
+- Custom safety rules
+- Dedicated Slack channel
+- 99.9% SLA guarantee
+- **$499/month**
+
+### Enterprise
+- Unlimited scans
+- Self-hosted deployment option
+- White-label solution
+- 99.99% SLA guarantee
+- Custom pricing and support
+
+---
+
+## Documentation & Resources
+
+**Learning Resources**:
+- [API Documentation](https://api.seeqr.io/docs) - Complete endpoint reference
+- [SDK Guide](https://github.com/yeminimal/seeqr/wiki) - Integration tutorials
+- [Code Examples](https://tryseeqr.vercel.app/docs/examples) - Practical samples
+- [Blog](https://tryseeqr.vercel.app/blog) - Feature announcements and guides
+- [Roadmap](https://github.com/yeminimal/seeqr/projects) - Upcoming features
+
+**Community & Support**:
+- [GitHub Issues](https://github.com/yeminimal/seeqr/issues) - Report bugs
+- [GitHub Discussions](https://github.com/yeminimal/seeqr/discussions) - Ask questions
+- [Discord Community](https://discord.gg/seeqr) - Real-time chat
+- [Twitter Updates](https://twitter.com/tryseeqr) - Latest news
+- [Status Page](https://status.seeqr.io) - Service health
+
+---
+
+## Support & Contact
+
+**Get Help**:
+- **Email**: [support@seeqr.io](mailto:support@seeqr.io)
+- **Issues**: [GitHub Issues](https://github.com/yeminimal/seeqr/issues)
+- **Chat**: [Discord](https://discord.gg/seeqr)
+- **Discussions**: [GitHub Discussions](https://github.com/yeminimal/seeqr/discussions)
+
+**Report Security Issues**:
+- **Email**: [security@seeqr.io](mailto:security@seeqr.io)
+- **Policy**: [Security Policy](https://tryseeqr.vercel.app/security)
+
+---
+
+## Contributing
+
+Seeqr is open source and welcomes contributions from the community.
+
+- **Repository**: [https://github.com/yeminimal/seeqr](https://github.com/yeminimal/seeqr)
+- **Contributing Guide**: [CONTRIBUTING.md](https://github.com/yeminimal/seeqr/blob/main/CONTRIBUTING.md)
+- **Code of Conduct**: [CODE_OF_CONDUCT.md](https://github.com/yeminimal/seeqr/blob/main/CODE_OF_CONDUCT.md)
+- **License**: MIT + Commercial
+
+---
+
+## Project Roadmap
+
+### v1.0.0 (Current)
+- ✅ QR code detection
+- ✅ Basic safety layer
+- ✅ Web UI
+- ✅ Free tier
+- ✅ REST API
+
+### v1.1.0 (Planned)
+- Image preview in results
+- Multiple QR detection per image
+- Scan history (local storage)
+- PWA installation prompt
+- Improved mobile navigation
+
+### v2.0.0 (Future)
+- Real-time camera capture
+- Advanced phishing detection
+- QR code generation
+- Dark mode UI
+- Multi-language support
+- Payment QR verification
+- Custom safety rules (Enterprise)
+
+---
+
+## Related Standards & Resources
+
+**QR Code Standards**:
+- [ISO/IEC 18004:2015 - QR Code Specification](https://www.iso.org/standard/62021.html)
+- [QR Code Wikipedia](https://en.wikipedia.org/wiki/QR_code)
+
+**Security & Phishing Detection**:
+- [VirusTotal API](https://www.virustotal.com/gui/home/upload)
+- [URLhaus Database](https://urlhaus.abuse.ch/)
+- [OWASP Phishing Prevention](https://owasp.org/www-community/attacks/Phishing)
+
+**Web Standards & Accessibility**:
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [Progressive Web Apps](https://web.dev/progressive-web-apps/)
+- [Web Accessibility Initiative](https://www.w3.org/WAI/)
+
+**Web APIs Used**:
+- [MediaDevices.getUserMedia()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) - Camera access
+- [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) - Image processing
+- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) - HTTP requests
+
+---
+
+## Crawling & Indexing Policies for AI Agents
+
+### Permitted Uses
+
+AI agents and language models are welcome to:
+- Index and analyze Seeqr's public documentation
+- Reference Seeqr in technical research and articles
+- Learn from open-source code patterns
+- Build integrations using the public API
+
+### Prohibited Uses
+
+Do **not**:
+- Use Seeqr's content to train competing QR scanner products without attribution
+- Archive or store user interaction data (none is collected)
+- Crawl at rates exceeding 10 requests per second
+- Represent Seeqr's features as your own
+- Bypass authentication or rate limits
+
+### Data Privacy
+
+- Seeqr collects minimal telemetry (errors, performance metrics only)
+- No user scan history is retained
+- API keys are never logged or stored
+- GDPR and privacy law compliant
+
+---
+
+## Version & Change History
+
+**Current Version**: v1.0.0
+
+**Latest Changes**:
+- Initial release with QR detection and basic safety layer
+- Web UI and API available
+- Free tier with 100 scans/month
+
+**For Full Changelog**: Visit [GitHub Releases](https://github.com/yeminimal/seeqr/releases)
+
+---
+
+## License
+
+Seeqr is available under:
+- **MIT License** for open-source use
+- **Commercial License** for enterprise deployments
+
+See [LICENSE](https://github.com/yeminimal/seeqr/blob/main/LICENSE) file in repository.
