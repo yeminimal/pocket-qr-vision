@@ -12,7 +12,6 @@ export default defineConfig({
   ...(process.env.VERCEL ? { cloudflare: false } : {}),
   tanstackStart: {
     server: { entry: "server" },
-    pages: [{ path: "/", prerender: { enabled: true } }],
-    prerender: { enabled: true },
+    prerender: { enabled: false, autoStaticPathsDiscovery: false },
   },
 });
