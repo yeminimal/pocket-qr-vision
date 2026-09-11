@@ -1,71 +1,44 @@
-## QR Scanner Web App — V1 MVP
+# Seeqr Premium Platform — Stage 1: Accounts & Data Foundation
 
-A lightweight, privacy-first QR scanner. Users upload an image; the app decodes it entirely in the browser using `jsQR` and shows the result with copy / open / share actions. No backend, no tracking, no uploads.
+Your document describes a 7-stage build. It is explicitly ordered: each stage needs the one
+before it. So this plan covers Stage 1 only, and we move on once it is confirmed.
 
-### Scope (V1)
+## What Stage 1 delivers
 
-- Image upload via file picker + drag-and-drop (JPG/PNG/WebP, ≤10 MB)
-- Client-side decode using `jsQR` on a Canvas
-- Detect URL vs plain text; show formatted result + raw view toggle
-- Actions: Copy, Open in new tab (URLs only, with `rel="noopener noreferrer"`), Share (Web Share API when available), Scan another
-- Clear error states: no QR found, invalid type, file too large, decode failure
-- Mobile-first responsive layout, WCAG AA, keyboard-accessible
+Turning on Lovable Cloud (built-in database, logins, server code, file storage) and creating
+the full data foundation the premium platform needs. No new screens yet — nothing visible
+changes in the app.
 
-Out of scope for V1: live camera scanning, history, multi-QR per image, PWA install, dark mode (can follow in V1.1).
+Records created:
 
-### Tech mapping to this project
+- People and plans: profiles, subscriptions, plan limits per tier (free / developer /
+  business / custom), sales leads
+- Scanning history: scans, per-photo results, detailed threat reports, user feedback on
+  reports
+- Developer access: API keys (stored hashed) and per-call usage logs
 
-This project is TanStack Start (not raw Vite+React from the doc). The architecture still fits — everything runs client-side. Specifics:
+Plan limits are seeded exactly as your document specifies, so later stages read limits from
+the database instead of numbers baked into the code.
 
-- Single route: `src/routes/index.tsx` replaces the placeholder with the scanner UI
-- `jsqr` added as a dependency
-- Local React state (`useReducer` or `useState`) is enough; skipping Zustand to avoid a dep for one screen
-- Decode runs in an async handler off the main render path; for V1 we call `jsQR` directly (Web Worker can come in V1.1 if needed)
-- Styling via existing Tailwind v4 + design tokens in `src/styles.css` (no new CSS framework)
-- No Lovable Cloud — fully static/client-side
+## Security
 
-### File plan
+Every table gets row-level access rules: people can only read their own profile, plan,
+scans and reports. Plan limits are readable by everyone. Only server-side code can change
+subscriptions. Full API key values are never readable by the browser — only the short prefix.
 
-```text
-src/routes/index.tsx              # Scanner page (replaces placeholder)
-src/components/qr/Dropzone.tsx    # File picker + drag/drop + validation
-src/components/qr/ResultCard.tsx  # Formatted result + raw toggle + actions
-src/components/qr/ErrorState.tsx  # Friendly error messages
-src/lib/qr/decode.ts              # File → ImageBitmap → Canvas → jsQR
-src/lib/qr/validate.ts            # File-type/size guard + URL detection
-src/styles.css                    # Minor token additions if needed
-```
+## What comes next (not in this stage)
 
-Also update `__root.tsx` head metadata (title, description, og tags) for SEO/share.
+Stage 2 sign-up + Stripe checkout and Contact Sales, Stage 3 limit enforcement, Stage 4
+scan speed work, Stage 5 full report modal, Stage 6 public API + SDK, Stage 7 use cases.
+Stripe will need your keys before Stage 2 billing can go live.
 
-### Decode flow
+## Technical notes
 
-```text
-File → validate (type, size)
-     → createImageBitmap (fast path) / fallback to <img>+canvas
-     → draw to OffscreenCanvas (or HTMLCanvas) at capped max dimension (e.g. 1600px)
-     → ctx.getImageData → jsQR(data, w, h, { inversionAttempts: "attemptBoth" })
-     → { data, isUrl } | { error }
-```
-
-### UX states
-
-1. Idle — dropzone with "Upload an image with a QR code", supported formats, size limit
-2. Scanning — spinner + "Decoding…"
-3. Success — result card with: detected text, badge (URL / Text), Copy, Open (if URL), Share (if supported), View raw toggle, "Scan another"
-4. Error — icon + message + "Try another image"
-
-### Design direction
-
-Clean, calm, mobile-first. Light surface, single accent color, generous spacing, rounded cards, no decorative noise. Uses existing design tokens (`background`, `foreground`, `primary`, `muted`, `card`, `border`) so light/dark both work. One H1, semantic landmarks, focus-visible rings, 44px tap targets, `aria-live="polite"` for result/error announcements.
-
-### Acceptance checks
-
-- Upload a known QR image → decoded text shows within ~1s on desktop
-- Non-image file → friendly type error, no crash
-- >10 MB file → size error before decode
-- Image without a QR → "No QR code found" message, can retry
-- URL result → Open button works (`target="_blank"`, `noopener`); plain text → Open hidden
-- Copy button gives visual confirmation; Share appears only when `navigator.share` exists
-- Keyboard: Tab reaches dropzone, Enter/Space opens picker; all action buttons reachable
-- Lighthouse a11y ≥ 95 on the page
+- Tables per Stage 1 spec, plus `sales_leads` (pulled forward from Stage 2 since it is
+  schema).
+- Enums `subscription_tier`, `subscription_status`.
+- Each `CREATE TABLE` followed by explicit GRANTs, then RLS enable, then policies.
+- Anonymous scan rows are scoped by `session_fingerprint`; a role table is not needed yet.
+- Server logic in this project uses TanStack server functions, not Supabase Edge Functions;
+  later stages implement the document's "Edge Function" items that way, with public API
+  endpoints under `src/routes/api/public/*`.
