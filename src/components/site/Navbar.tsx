@@ -75,12 +75,6 @@ export function Navbar() {
 
           <div className="flex items-center gap-1.5">
             <ThemeToggle />
-            <Link
-              to="/pricing"
-              className="hidden items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-light tracking-tight text-primary-foreground transition-opacity hover:opacity-90 sm:inline-flex"
-            >
-              Go premium
-            </Link>
 
             <button
               type="button"
@@ -170,13 +164,6 @@ export function Navbar() {
               ))}
             </ul>
 
-            <Link
-              to="/pricing"
-              onClick={() => setOpen(false)}
-              className="mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-4 text-[15px] font-light text-primary-foreground"
-            >
-              Go premium
-            </Link>
           </div>
         </div>
       )}

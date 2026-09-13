@@ -42,14 +42,10 @@ export const primaryNav: { label: string; to?: string; items?: NavItem[] }[] = [
     label: "Docs",
     items: [
       { label: "Getting Started", to: "/docs/getting-started", description: "Your first scan" },
-      { label: "API Documentation", to: "/docs/api", description: "REST endpoints" },
-      { label: "SDK (NPM Package)", to: "/docs/sdk", description: "Use Seeqr in your app" },
       { label: "Safety Layer", to: "/docs/safety-layer", description: "Risk scoring" },
-      { label: "Code Examples", to: "/docs/examples", description: "Copy-paste snippets" },
     ],
   },
   { label: "Scan URL", to: "/scanner" },
-  { label: "Pricing", to: "/pricing" },
   { label: "Blog", to: "/blog" },
   { label: "About", to: "/about" },
 ];
@@ -61,8 +57,6 @@ export const footerColumns: { title: string; items: NavItem[] }[] = [
       { label: "Scan QR codes", to: "/" },
       { label: "Scan a URL", to: "/scanner" },
       { label: "Features", to: "/features" },
-      { label: "API Documentation", to: "/docs/api" },
-      { label: "Pricing", to: "/pricing" },
     ],
   },
   {
@@ -75,12 +69,9 @@ export const footerColumns: { title: string; items: NavItem[] }[] = [
     ],
   },
   {
-    title: "Developers",
+    title: "Guides",
     items: [
       { label: "Getting started", to: "/docs/getting-started" },
-      { label: "API docs", to: "/docs/api" },
-      { label: "NPM package", to: "/docs/sdk" },
-      { label: "Code examples", to: "/docs/examples" },
       { label: "Safety layer", to: "/docs/safety-layer" },
     ],
   },

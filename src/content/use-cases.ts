@@ -4,8 +4,8 @@ const cta = {
   type: "cta" as const,
   heading: "Try it with your own image",
   sub: "Free, private, and instant.",
-  primary: { label: "Scan for free", to: "/app" },
-  secondary: { label: "See pricing", to: "/pricing" },
+  primary: { label: "Scan for free", to: "/" },
+  secondary: { label: "Check a URL", to: "/scanner" },
 };
 
 export const useCasesHub: ContentPage = {

@@ -28,7 +28,7 @@ const sections: Section[] = [
       { icon: "lock", title: "Fully private", body: "Decoding happens locally. Nothing is uploaded or stored.", to: "/features/privacy-first" },
       { icon: "bolt", title: "Tiny and fast", body: "Loads on slow networks and runs on entry-level devices." },
       { icon: "clock", title: "Offline capable", body: "Keeps decoding once the page has loaded." },
-      { icon: "chart", title: "API and SDK", body: "Add the same detection to your own product.", to: "/docs/api" },
+      { icon: "upload", title: "Multiple codes", body: "Find and list several QR codes from the same photo." },
     ],
   },
   {
@@ -40,7 +40,7 @@ const sections: Section[] = [
       { q: "Are my images uploaded?", a: "No. The image is decoded in your browser and never sent to a server." },
       { q: "Which files can I use?", a: "JPG, PNG and WebP images up to 10 MB." },
       { q: "Does it work without internet?", a: "Yes, once the page has loaded decoding continues offline." },
-      { q: "Can I use it in my own app?", a: "Yes - the API and NPM SDK expose the same detection and safety layer." },
+      { q: "Can one photo contain several codes?", a: "Yes. Seeqr finds multiple QR codes in one image and lists each result separately." },
     ],
   },
 ];

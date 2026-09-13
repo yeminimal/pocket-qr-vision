@@ -6,7 +6,6 @@ import { FilePreviewGrid, type PickedFile } from "@/components/qr/FilePreviewGri
 import { ResultList, type ScanResult } from "@/components/qr/ResultList";
 import { ErrorState } from "@/components/qr/ErrorState";
 import { ReviewPrompt, reviewPromptIsCoolingDown } from "@/components/qr/ReviewPrompt";
-import { UpgradeBanner } from "@/components/qr/UpgradeBanner";
 import { MAX_FILES, validateImageFile } from "@/lib/qr/validate";
 import { decodeQrCodesFromFile } from "@/lib/qr/decode";
 import {
@@ -183,7 +182,6 @@ export function Scanner() {
                     Scan more photos
                   </Button>
                 </div>
-                <UpgradeBanner />
               </>
             )}
           </div>
